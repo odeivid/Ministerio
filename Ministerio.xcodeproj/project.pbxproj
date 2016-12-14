@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF08FCD21E01EC2700746338 /* RevisitaMapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF08FCD11E01EC2700746338 /* RevisitaMapaViewController.swift */; };
 		AF9B1D941E00AD7700FB95B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B1D931E00AD7700FB95B6 /* AppDelegate.swift */; };
 		AF9B1D961E00AD7700FB95B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B1D951E00AD7700FB95B6 /* ViewController.swift */; };
 		AF9B1D991E00AD7700FB95B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9B1D971E00AD7700FB95B6 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF08FCD11E01EC2700746338 /* RevisitaMapaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevisitaMapaViewController.swift; sourceTree = "<group>"; };
 		AF9B1D901E00AD7700FB95B6 /* Ministerio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ministerio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9B1D931E00AD7700FB95B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF9B1D951E00AD7700FB95B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				AF9B1D931E00AD7700FB95B6 /* AppDelegate.swift */,
+				AF08FCD11E01EC2700746338 /* RevisitaMapaViewController.swift */,
 				AF9B1D951E00AD7700FB95B6 /* ViewController.swift */,
 				AF9B1D971E00AD7700FB95B6 /* Main.storyboard */,
 				AF9B1D9D1E00AD7700FB95B6 /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF08FCD21E01EC2700746338 /* RevisitaMapaViewController.swift in Sources */,
 				AF9B1D961E00AD7700FB95B6 /* ViewController.swift in Sources */,
 				AF9B1D941E00AD7700FB95B6 /* AppDelegate.swift in Sources */,
 				AF9B1D9C1E00AD7700FB95B6 /* Ministerio.xcdatamodeld in Sources */,
@@ -318,6 +322,7 @@
 				AF9B1DA71E00AD7700FB95B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
