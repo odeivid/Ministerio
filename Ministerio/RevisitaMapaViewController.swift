@@ -60,7 +60,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     }
     
     
-    /* METODOS */
+    //MARK: METODOS
     
     func configuraGerenciadorLocalizacao() {
         gerenciadorLocalizacao.delegate = self

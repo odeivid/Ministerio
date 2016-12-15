@@ -15,6 +15,7 @@
 		AF9B1D9E1E00AD7700FB95B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF9B1D9D1E00AD7700FB95B6 /* Assets.xcassets */; };
 		AF9B1DA11E00AD7700FB95B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9B1D9F1E00AD7700FB95B6 /* LaunchScreen.storyboard */; };
 		AF9B1DAA1E00AFC600FB95B6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9B1DA91E00AFC600FB95B6 /* MapKit.framework */; };
+		AFC243301E0331F7006BE491 /* RevisitaCadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2432F1E0331F7006BE491 /* RevisitaCadastroViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AF9B1DA01E00AD7700FB95B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF9B1DA21E00AD7700FB95B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF9B1DA91E00AFC600FB95B6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AFC2432F1E0331F7006BE491 /* RevisitaCadastroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevisitaCadastroViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				AF9B1D931E00AD7700FB95B6 /* AppDelegate.swift */,
 				AF08FCD11E01EC2700746338 /* RevisitaMapaViewController.swift */,
+				AFC2432F1E0331F7006BE491 /* RevisitaCadastroViewController.swift */,
 				AF9B1D951E00AD7700FB95B6 /* ViewController.swift */,
 				AF9B1D971E00AD7700FB95B6 /* Main.storyboard */,
 				AF9B1D9D1E00AD7700FB95B6 /* Assets.xcassets */,
@@ -157,6 +160,7 @@
 			files = (
 				AF08FCD21E01EC2700746338 /* RevisitaMapaViewController.swift in Sources */,
 				AF9B1D961E00AD7700FB95B6 /* ViewController.swift in Sources */,
+				AFC243301E0331F7006BE491 /* RevisitaCadastroViewController.swift in Sources */,
 				AF9B1D941E00AD7700FB95B6 /* AppDelegate.swift in Sources */,
 				AF9B1D9C1E00AD7700FB95B6 /* Ministerio.xcdatamodeld in Sources */,
 			);
