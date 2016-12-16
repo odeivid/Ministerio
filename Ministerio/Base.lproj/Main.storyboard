@@ -109,27 +109,27 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="em cada campo ter o botao return para seguinte, e no ultimo campos ser um DONE " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oke-fP-Qit">
-                                <rect key="frame" x="16" y="381" width="343" height="83"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UoF-c5-Qbf">
+                                <rect key="frame" x="16" y="72" width="343" height="30"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UoF-c5-Qbf">
-                                <rect key="frame" x="16" y="80" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next"/>
                             </textField>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbB-4l-kNf">
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UoF-c5-Qbf" firstAttribute="top" secondItem="3hv-uf-RAA" secondAttribute="bottom" constant="16" id="0sQ-Lk-oEV"/>
+                            <constraint firstItem="UoF-c5-Qbf" firstAttribute="top" secondItem="3hv-uf-RAA" secondAttribute="bottom" constant="8" id="0sQ-Lk-oEV"/>
+                            <constraint firstItem="bbB-4l-kNf" firstAttribute="top" secondItem="UoF-c5-Qbf" secondAttribute="bottom" constant="8" id="2c4-ng-ocT"/>
                             <constraint firstItem="UoF-c5-Qbf" firstAttribute="leading" secondItem="ffw-vQ-rRS" secondAttribute="leading" constant="16" id="7Fx-GK-bMc"/>
                             <constraint firstAttribute="trailing" secondItem="UoF-c5-Qbf" secondAttribute="trailing" constant="16" id="9IG-U8-Nbr"/>
                             <constraint firstItem="3hv-uf-RAA" firstAttribute="leading" secondItem="ffw-vQ-rRS" secondAttribute="leading" id="AtZ-zX-bPS"/>
+                            <constraint firstItem="ru7-h4-Zie" firstAttribute="top" secondItem="bbB-4l-kNf" secondAttribute="bottom" id="CkP-Xl-6BR"/>
+                            <constraint firstItem="bbB-4l-kNf" firstAttribute="leading" secondItem="ffw-vQ-rRS" secondAttribute="leading" id="PUK-lB-Ayc"/>
                             <constraint firstAttribute="trailing" secondItem="3hv-uf-RAA" secondAttribute="trailing" id="SBL-2f-M7D"/>
+                            <constraint firstAttribute="trailing" secondItem="bbB-4l-kNf" secondAttribute="trailing" id="fGj-MB-1Fd"/>
                             <constraint firstItem="3hv-uf-RAA" firstAttribute="top" secondItem="7Kx-CD-eaj" secondAttribute="bottom" id="uN9-cv-CFy"/>
                         </constraints>
                     </view>
