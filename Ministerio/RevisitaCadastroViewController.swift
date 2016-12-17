@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
+class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var txtNotas: UITextView!
     @IBOutlet weak var sldFonte: UISlider!
@@ -24,7 +24,15 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, MKM
         self.sldFonte.value = Float(self.recuperarTamanhoFonte())
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -32,16 +40,12 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, MKM
     
     
     //MARK: ACTIONS
+    
     @IBAction func cancelar(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func alterarFonteNotas(_ sender: Any) {
-        let size = CGFloat(sldFonte.value)
-        self.alterarTamanhoFonteNotas(tamanho: size)
-        self.salvarTamanhoFonte(tamanho: size)
-    }
-    
+ 
     @IBAction func fazerLigacao(_ sender: Any) {
         if txtTelefone.text != nil {
             if let phoneURL = NSURL(string: "tel:" + txtTelefone.text!) {
@@ -53,6 +57,12 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, MKM
                 }
             }
         }
+    }
+    
+    @IBAction func alterarFonteNotas(_ sender: Any) {
+        let size = CGFloat(sldFonte.value)
+        self.alterarTamanhoFonteNotas(tamanho: size)
+        self.salvarTamanhoFonte(tamanho: size)
     }
     
     
