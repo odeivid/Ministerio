@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class RevisitaCadastroViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var txtNotas: UITextView!
     @IBOutlet weak var sldFonte: UISlider!

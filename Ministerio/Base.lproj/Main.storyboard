@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -90,7 +91,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ru7-h4-Zie"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ffw-vQ-rRS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hv-uf-RAA">
@@ -114,126 +115,196 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="JXm-NM-ZZ2" id="Kyo-ok-BlD"/>
+                                </connections>
                             </textField>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbB-4l-kNf">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbB-4l-kNf">
                                 <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F8Q-kU-79U">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8Q-kU-79U">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Endereço" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aA0-HT-cXI">
-                                                <rect key="frame" x="16" y="8" width="343" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bairro" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gdc-Y1-ZQf">
-                                                <rect key="frame" x="16" y="46" width="208" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cidade / Estado" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mHV-PD-7bB">
-                                                <rect key="frame" x="232" y="46" width="127" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Território / Referência" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZdM-Kt-LEf">
-                                                <rect key="frame" x="16" y="84" width="343" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Telefone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oA8-5i-jHH">
-                                                <rect key="frame" x="16" y="122" width="286" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Próxima visita" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfG-QP-SIF">
-                                                <rect key="frame" x="16" y="160" width="343" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
-                                            </textField>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z3i-BI-VdR">
-                                                <rect key="frame" x="310" y="195" width="51" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </switch>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYj-b6-pHB">
-                                                <rect key="frame" x="16" y="234" width="343" height="282"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <string key="text">O cristianismo aumentou no primeiro século. Para progredir em sentido espiritual, cada cristão precisava se esforçar bastante. Estudo diligente das Escrituras, assistência regular às reuniões para adoração e a participação zelosa na obra de pregar o Reino eram essenciais. (19) 99870-3376. Essas atividades contribuíam para a saúde espiritual e a união do povo de Jeová naquela época, assim como hoje. Aqueles que se associavam com as bem-organizadas congregações do primeiro século tiravam grande proveito da ajuda e dos esforços voluntários de superintendentes e servos ministeriais. (Fil. 1:1; 1 Ped. 5:1-4) E como deve ter sido bom para as congregações receberem a visita de anciãos viajantes como Paulo! (Atos 15:36, 40, 41) As similaridades entre nossa adoração e a dos cristãos do primeiro século são impressionantes. Somos muito gratos por Jeová ter organizado seus servos tanto no passado como em nossos dias! w14 15/5 3:15, 16</string>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES" calendarEvent="YES"/>
-                                            </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Estudo bíblico?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhz-nN-9dQ">
-                                                <rect key="frame" x="185" y="201" width="117" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <color key="highlightedColor" red="0.5087246192893401" green="0.5087246192893401" blue="0.5087246192893401" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fonte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98p-Uf-nFh">
-                                                <rect key="frame" x="16" y="524" width="44" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <color key="highlightedColor" red="0.50872461930000001" green="0.50872461930000001" blue="0.50872461930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EzJ-xy-Skm">
-                                                <rect key="frame" x="16" y="198" width="121" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <segments>
-                                                    <segment title="Notas"/>
-                                                    <segment title="Mapa"/>
-                                                </segments>
-                                            </segmentedControl>
-                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="14" minValue="14" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="DhA-LH-ojt">
-                                                <rect key="frame" x="66" y="519" width="295" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <connections>
-                                                    <action selector="alterarFonteNotas:" destination="JXm-NM-ZZ2" eventType="valueChanged" id="xYC-Q5-Y15"/>
-                                                </connections>
-                                            </slider>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DiG-zw-QCt">
-                                                <rect key="frame" x="310" y="122" width="46" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Ligar"/>
-                                                <connections>
-                                                    <action selector="fazerLigacao:" destination="JXm-NM-ZZ2" eventType="touchUpInside" id="A0l-1a-pjH"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tZS-0S-Ah5">
+                                                <rect key="frame" x="16" y="8" width="343" height="549"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Endereço" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aA0-HT-cXI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="JXm-NM-ZZ2" id="HPL-oq-x0f"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="byR-de-KGg">
+                                                        <rect key="frame" x="0.0" y="38" width="343" height="30"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bairro" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gdc-Y1-ZQf">
+                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="JXm-NM-ZZ2" id="RXV-uV-050"/>
+                                                                </connections>
+                                                            </textField>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cidade / Estado" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mHV-PD-7bB">
+                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="JXm-NM-ZZ2" id="KLP-em-SBd"/>
+                                                                </connections>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Território / Referência" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZdM-Kt-LEf">
+                                                        <rect key="frame" x="0.0" y="76" width="343" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="JXm-NM-ZZ2" id="9Mk-46-bKN"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sZo-vU-Hv3">
+                                                        <rect key="frame" x="0.0" y="114" width="343" height="30"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Telefone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oA8-5i-jHH">
+                                                                <rect key="frame" x="0.0" y="0.0" width="255" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="JXm-NM-ZZ2" id="xMN-QN-AW7"/>
+                                                                </connections>
+                                                            </textField>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DiG-zw-QCt">
+                                                                <rect key="frame" x="263" y="0.0" width="80" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="80" id="a9K-lj-RFI"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Ligar"/>
+                                                                <connections>
+                                                                    <action selector="fazerLigacao:" destination="JXm-NM-ZZ2" eventType="touchUpInside" id="A0l-1a-pjH"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="DiG-zw-QCt" secondAttribute="trailing" id="RlP-6V-MgE"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Próxima visita" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfG-QP-SIF">
+                                                        <rect key="frame" x="0.0" y="152" width="110.5" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="JXm-NM-ZZ2" id="VFP-Yz-1QJ"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="98T-Te-UZP">
+                                                        <rect key="frame" x="0.0" y="190" width="343" height="31"/>
+                                                        <subviews>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EzJ-xy-Skm">
+                                                                <rect key="frame" x="0.0" y="0.0" width="161.5" height="32"/>
+                                                                <segments>
+                                                                    <segment title="Notas"/>
+                                                                    <segment title="Mapa"/>
+                                                                </segments>
+                                                            </segmentedControl>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estudo bíblico?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhz-nN-9dQ">
+                                                                <rect key="frame" x="169.5" y="0.0" width="116.5" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <color key="highlightedColor" red="0.5087246192893401" green="0.5087246192893401" blue="0.5087246192893401" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="right" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z3i-BI-VdR">
+                                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYj-b6-pHB">
+                                                        <rect key="frame" x="0.0" y="229" width="343" height="282"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <string key="text">O cristianismo aumentou no primeiro século. Para progredir em sentido espiritual, cada cristão precisava se esforçar bastante. Estudo diligente das Escrituras, assistência regular às reuniões para adoração e a participação zelosa na obra de pregar o Reino eram essenciais. (19) 99870-3376. Essas atividades contribuíam para a saúde espiritual e a união do povo de Jeová naquela época, assim como hoje. Aqueles que se associavam com as bem-organizadas congregações do primeiro século tiravam grande proveito da ajuda e dos esforços voluntários de superintendentes e servos ministeriais. (Fil. 1:1; 1 Ped. 5:1-4) E como deve ter sido bom para as congregações receberem a visita de anciãos viajantes como Paulo! (Atos 15:36, 40, 41) As similaridades entre nossa adoração e a dos cristãos do primeiro século são impressionantes. Somos muito gratos por Jeová ter organizado seus servos tanto no passado como em nossos dias! w14 15/5 3:15, 16</string>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES" calendarEvent="YES"/>
+                                                    </textView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UM2-Is-gbu">
+                                                        <rect key="frame" x="0.0" y="519" width="343" height="30"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Fonte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98p-Uf-nFh">
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="50" id="MCP-Fb-dWR"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <color key="highlightedColor" red="0.50872461930000001" green="0.50872461930000001" blue="0.50872461930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </label>
+                                                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="14" minValue="14" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="DhA-LH-ojt">
+                                                                <rect key="frame" x="56" y="0.0" width="289" height="31"/>
+                                                                <connections>
+                                                                    <action selector="alterarFonteNotas:" destination="JXm-NM-ZZ2" eventType="valueChanged" id="xYC-Q5-Y15"/>
+                                                                </connections>
+                                                            </slider>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="sZo-vU-Hv3" secondAttribute="trailing" id="CmY-oF-pLs"/>
+                                                    <constraint firstItem="aA0-HT-cXI" firstAttribute="leading" secondItem="tZS-0S-Ah5" secondAttribute="leading" id="HN8-eC-O1t"/>
+                                                    <constraint firstAttribute="trailing" secondItem="UM2-Is-gbu" secondAttribute="trailing" id="Ob4-g7-KNN"/>
+                                                    <constraint firstAttribute="trailing" secondItem="byR-de-KGg" secondAttribute="trailing" id="QNs-EG-bfY"/>
+                                                    <constraint firstItem="98T-Te-UZP" firstAttribute="leading" secondItem="tZS-0S-Ah5" secondAttribute="leading" id="Rz9-Ct-KZy"/>
+                                                    <constraint firstAttribute="trailing" secondItem="98T-Te-UZP" secondAttribute="trailing" id="abg-6e-cKD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ZdM-Kt-LEf" secondAttribute="trailing" id="bWq-NL-dgI"/>
+                                                    <constraint firstItem="UM2-Is-gbu" firstAttribute="leading" secondItem="tZS-0S-Ah5" secondAttribute="leading" id="kxD-uf-qAU"/>
+                                                    <constraint firstAttribute="trailing" secondItem="aA0-HT-cXI" secondAttribute="trailing" id="ngt-YT-I42"/>
+                                                    <constraint firstItem="ZdM-Kt-LEf" firstAttribute="leading" secondItem="tZS-0S-Ah5" secondAttribute="leading" id="pg2-gK-Vd8"/>
+                                                    <constraint firstItem="byR-de-KGg" firstAttribute="leading" secondItem="tZS-0S-Ah5" secondAttribute="leading" id="s1Y-EN-E6b"/>
+                                                    <constraint firstItem="sZo-vU-Hv3" firstAttribute="leading" secondItem="tZS-0S-Ah5" secondAttribute="leading" id="w5L-G4-QdE"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.94332963197969544" green="0.94332963197969544" blue="0.94332963197969544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="tZS-0S-Ah5" firstAttribute="top" secondItem="F8Q-kU-79U" secondAttribute="topMargin" constant="8" id="ego-sH-hSB"/>
+                                            <constraint firstAttribute="height" constant="1000" id="ooa-Xv-Hev"/>
+                                            <constraint firstItem="tZS-0S-Ah5" firstAttribute="leading" secondItem="F8Q-kU-79U" secondAttribute="leadingMargin" constant="8" id="pts-S7-Vqu"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="tZS-0S-Ah5" secondAttribute="trailing" constant="8" id="q9R-2W-opg"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="F8Q-kU-79U" firstAttribute="leading" secondItem="bbB-4l-kNf" secondAttribute="leading" id="1IF-rK-AX2"/>
+                                    <constraint firstItem="F8Q-kU-79U" firstAttribute="top" secondItem="bbB-4l-kNf" secondAttribute="top" id="KcT-qY-apw"/>
+                                    <constraint firstAttribute="bottom" secondItem="F8Q-kU-79U" secondAttribute="bottom" id="R2m-T9-JIE"/>
+                                    <constraint firstAttribute="trailing" secondItem="F8Q-kU-79U" secondAttribute="trailing" id="tNe-q5-oqa"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ru7-h4-Zie" firstAttribute="top" secondItem="bbB-4l-kNf" secondAttribute="bottom" id="0aX-fY-w6v"/>
                             <constraint firstItem="UoF-c5-Qbf" firstAttribute="top" secondItem="3hv-uf-RAA" secondAttribute="bottom" constant="8" id="0sQ-Lk-oEV"/>
-                            <constraint firstItem="bbB-4l-kNf" firstAttribute="top" secondItem="UoF-c5-Qbf" secondAttribute="bottom" constant="8" id="2c4-ng-ocT"/>
+                            <constraint firstItem="bbB-4l-kNf" firstAttribute="top" secondItem="UoF-c5-Qbf" secondAttribute="bottom" constant="8" id="5DH-AR-Mvy"/>
                             <constraint firstItem="UoF-c5-Qbf" firstAttribute="leading" secondItem="ffw-vQ-rRS" secondAttribute="leading" constant="16" id="7Fx-GK-bMc"/>
                             <constraint firstAttribute="trailing" secondItem="UoF-c5-Qbf" secondAttribute="trailing" constant="16" id="9IG-U8-Nbr"/>
                             <constraint firstItem="3hv-uf-RAA" firstAttribute="leading" secondItem="ffw-vQ-rRS" secondAttribute="leading" id="AtZ-zX-bPS"/>
-                            <constraint firstItem="ru7-h4-Zie" firstAttribute="top" secondItem="bbB-4l-kNf" secondAttribute="bottom" id="CkP-Xl-6BR"/>
-                            <constraint firstItem="bbB-4l-kNf" firstAttribute="leading" secondItem="ffw-vQ-rRS" secondAttribute="leading" id="PUK-lB-Ayc"/>
                             <constraint firstAttribute="trailing" secondItem="3hv-uf-RAA" secondAttribute="trailing" id="SBL-2f-M7D"/>
-                            <constraint firstAttribute="trailing" secondItem="bbB-4l-kNf" secondAttribute="trailing" id="fGj-MB-1Fd"/>
+                            <constraint firstAttribute="trailing" secondItem="bbB-4l-kNf" secondAttribute="trailing" id="YXf-eA-Qpy"/>
+                            <constraint firstItem="bbB-4l-kNf" firstAttribute="leading" secondItem="ffw-vQ-rRS" secondAttribute="leading" id="eyc-28-Kkt"/>
+                            <constraint firstItem="F8Q-kU-79U" firstAttribute="width" secondItem="ffw-vQ-rRS" secondAttribute="width" id="gQj-ey-MlA"/>
                             <constraint firstItem="3hv-uf-RAA" firstAttribute="top" secondItem="7Kx-CD-eaj" secondAttribute="bottom" id="uN9-cv-CFy"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="sldFonte" destination="DhA-LH-ojt" id="YTE-Iu-brz"/>
                         <outlet property="txtNotas" destination="yYj-b6-pHB" id="Col-87-XCj"/>
@@ -280,6 +351,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HV-HW-gRj">
+                                <rect key="frame" x="139" y="580" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
