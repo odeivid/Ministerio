@@ -172,7 +172,7 @@
                                                 <rect key="frame" x="16" y="234" width="343" height="282"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <mutableString key="text">O cristianismo aumentou no primeiro século. Para progredir em sentido espiritual, cada cristão precisava se esforçar bastante. Estudo diligente das Escrituras, assistência regular às reuniões para adoração e a participação zelosa na obra de pregar o Reino eram essenciais. (19) 99870-3376. Essas atividades contribuíam para a saúde espiritual e a união do povo de Jeová naquela época, assim como hoje. Aqueles que se associavam com as bem-organizadas congregações do primeiro século tiravam grande proveito da ajuda e dos esforços voluntários de superintendentes e servos ministeriais. (Fil. 1:1; 1 Ped. 5:1-4) E como deve ter sido bom para as congregações receberem a visita de anciãos viajantes como Paulo! (Atos 15:36, 40, 41) As similaridades entre nossa adoração e a dos cristãos do primeiro século são impressionantes. Somos muito gratos por Jeová ter organizado seus servos tanto no passado como em nossos dias! w14 15/5 3:15, 16</mutableString>
+                                                <string key="text">O cristianismo aumentou no primeiro século. Para progredir em sentido espiritual, cada cristão precisava se esforçar bastante. Estudo diligente das Escrituras, assistência regular às reuniões para adoração e a participação zelosa na obra de pregar o Reino eram essenciais. (19) 99870-3376. Essas atividades contribuíam para a saúde espiritual e a união do povo de Jeová naquela época, assim como hoje. Aqueles que se associavam com as bem-organizadas congregações do primeiro século tiravam grande proveito da ajuda e dos esforços voluntários de superintendentes e servos ministeriais. (Fil. 1:1; 1 Ped. 5:1-4) E como deve ter sido bom para as congregações receberem a visita de anciãos viajantes como Paulo! (Atos 15:36, 40, 41) As similaridades entre nossa adoração e a dos cristãos do primeiro século são impressionantes. Somos muito gratos por Jeová ter organizado seus servos tanto no passado como em nossos dias! w14 15/5 3:15, 16</string>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES" calendarEvent="YES"/>
@@ -210,6 +210,9 @@
                                                 <rect key="frame" x="310" y="122" width="46" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Ligar"/>
+                                                <connections>
+                                                    <action selector="fazerLigacao:" destination="JXm-NM-ZZ2" eventType="touchUpInside" id="A0l-1a-pjH"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.94332963197969544" green="0.94332963197969544" blue="0.94332963197969544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -234,6 +237,7 @@
                     <connections>
                         <outlet property="sldFonte" destination="DhA-LH-ojt" id="YTE-Iu-brz"/>
                         <outlet property="txtNotas" destination="yYj-b6-pHB" id="Col-87-XCj"/>
+                        <outlet property="txtTelefone" destination="oA8-5i-jHH" id="BVs-WM-7xf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oId-ZF-vcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

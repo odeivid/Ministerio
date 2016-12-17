@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
-class RevisitaCadastroViewController: UIViewController {
+class RevisitaCadastroViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var txtNotas: UITextView!
     @IBOutlet weak var sldFonte: UISlider!
+    @IBOutlet weak var txtTelefone: UITextField!
     
     let revisitaNotasFonte = "RevisitaNotasFonte"
     
@@ -39,6 +41,20 @@ class RevisitaCadastroViewController: UIViewController {
         self.alterarTamanhoFonteNotas(tamanho: size)
         self.salvarTamanhoFonte(tamanho: size)
     }
+    
+    @IBAction func fazerLigacao(_ sender: Any) {
+        if txtTelefone.text != nil {
+            if let phoneURL = NSURL(string: "tel:" + txtTelefone.text!) {
+                
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(phoneURL as URL, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(phoneURL as URL)
+                }
+            }
+        }
+    }
+    
     
     //MARK: FUNCOES
     
