@@ -20,8 +20,8 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         super.viewDidLoad()
 
         //a propria classa vai cuidar desses objetos
-        mapa.delegate = self
-        configuraGerenciadorLocalizacao()
+        self.mapa.delegate = self
+        self.configuraGerenciadorLocalizacao()
         
         
     }
