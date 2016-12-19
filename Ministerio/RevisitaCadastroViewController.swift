@@ -45,6 +45,30 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         view.endEditing(true)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        //Coloca o DatePicker para seleciona a data e horário
+        if textField == self.txtProximaVisita{
+            let datePicker = UIDatePicker()
+            datePicker.minuteInterval = 5
+            self.txtProximaVisita.inputView = datePicker
+            datePicker.addTarget(self, action: #selector(datePickerChanged(sender:)), for: .valueChanged)
+        }
+    }
+    
+    func datePickerChanged(sender: UIDatePicker) {
+        //converte a data em string
+        let formatterDate = DateFormatter()
+        formatterDate.dateStyle = .full
+        formatterDate.timeStyle = .short
+        //coloca o mês com 3 letras
+        formatterDate.dateFormat = formatterDate.dateFormat.replacingOccurrences(of: "MMMM", with: "MMM")
+        self.txtProximaVisita.text = formatterDate.string(from: sender.date)
+        
+        //converte a string em data
+        //print(formatterDate.date(from: self.txtProximaVisita.text!) as Any)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.txtNome{
             self.txtEndereco.becomeFirstResponder()

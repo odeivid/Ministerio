@@ -55,7 +55,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V4m-no-yde" id="nLV-az-u2S">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -196,11 +196,11 @@
                                                             <constraint firstAttribute="trailing" secondItem="DiG-zw-QCt" secondAttribute="trailing" id="RlP-6V-MgE"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Próxima visita" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfG-QP-SIF">
-                                                        <rect key="frame" x="0.0" y="152" width="110.5" height="30"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Próxima visita" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sfG-QP-SIF">
+                                                        <rect key="frame" x="0.0" y="152" width="343" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="JXm-NM-ZZ2" id="VFP-Yz-1QJ"/>
                                                         </connections>
@@ -262,8 +262,10 @@
                                                     <constraint firstAttribute="trailing" secondItem="UM2-Is-gbu" secondAttribute="trailing" id="Ob4-g7-KNN"/>
                                                     <constraint firstAttribute="trailing" secondItem="byR-de-KGg" secondAttribute="trailing" id="QNs-EG-bfY"/>
                                                     <constraint firstItem="98T-Te-UZP" firstAttribute="leading" secondItem="tZS-0S-Ah5" secondAttribute="leading" id="Rz9-Ct-KZy"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sfG-QP-SIF" secondAttribute="trailing" id="Uao-XZ-HNy"/>
                                                     <constraint firstAttribute="trailing" secondItem="98T-Te-UZP" secondAttribute="trailing" id="abg-6e-cKD"/>
                                                     <constraint firstAttribute="trailing" secondItem="ZdM-Kt-LEf" secondAttribute="trailing" id="bWq-NL-dgI"/>
+                                                    <constraint firstItem="sfG-QP-SIF" firstAttribute="leading" secondItem="tZS-0S-Ah5" secondAttribute="leading" id="bnB-Db-4Jr"/>
                                                     <constraint firstItem="UM2-Is-gbu" firstAttribute="leading" secondItem="tZS-0S-Ah5" secondAttribute="leading" id="kxD-uf-qAU"/>
                                                     <constraint firstAttribute="trailing" secondItem="aA0-HT-cXI" secondAttribute="trailing" id="ngt-YT-I42"/>
                                                     <constraint firstItem="ZdM-Kt-LEf" firstAttribute="leading" secondItem="tZS-0S-Ah5" secondAttribute="leading" id="pg2-gK-Vd8"/>
@@ -390,9 +392,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Configuracoes: tamabo fonte?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yn1-oK-cv8">
-                                <rect key="frame" x="129" y="266" width="231" height="134"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Configuracoes: -senha/touch ID -Buscar endereco automaticamente?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yn1-oK-cv8">
+                                <rect key="frame" x="72" y="235" width="237" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1F3-FM-I9V">
+                                <rect key="frame" x="72" y="377" width="1107" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Adicionar no Reminder? http://www.techotopia.com/index.php/Using_iOS_8_Event_Kit_and_Swift_to_Create_Date_and_Location_Based_Reminders</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
