@@ -73,7 +73,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BXe-IZ-xdj">
                             <connections>
-                                <segue destination="JXm-NM-ZZ2" kind="presentation" id="Sy2-cW-EHj"/>
+                                <segue destination="JXm-NM-ZZ2" kind="presentation" identifier="verRevisita" id="Sy2-cW-EHj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

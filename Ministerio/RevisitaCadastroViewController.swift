@@ -29,6 +29,8 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     var latitude: Double = 0
     var longitude: Double = 0
     
+    var revisita: Revisita!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +38,11 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         self.sldFonte.value = Float(self.recuperarTamanhoFonte())
 
         MapaGerenciador().configuraGerenciadorLocalizacao(mapaDelegate: self, gerenciadorLocalizacao: gerenciadorLocalizacao)
+        
+        if revisita != nil{
+            txtNome.text = revisita.nome
+            
+        }
         
       /*  let coreData = CoreDataRevisita()
         

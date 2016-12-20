@@ -10,6 +10,7 @@ import UIKit
 
 class RevistasListagemTableViewController: UITableViewController {
 
+    let segueRevisitaNome = "verRevisita"
     var revisitas: [Revisita] = []
     
     override func viewDidLoad() {
@@ -50,6 +51,28 @@ class RevistasListagemTableViewController: UITableViewController {
         cell.textLabel?.text = revisitas[indexPath.row].nome
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //abre uma segue com um identificador, por código
+        performSegue(withIdentifier: segueRevisitaNome, sender: indexPath.row)
+    }
+    
+    //metodo sempre executado qdo for abrir uma segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == segueRevisitaNome{
+            let revisitaViewController = segue.destination as! RevisitaCadastroViewController
+            
+            //verifica se o sender é um inteiro. Se for é porque foi chamado ao selecionar um índice
+            if let indiceSelecionado = sender as? Int{
+                revisitaViewController.revisita = revisitas[indiceSelecionado]
+                
+            }else{
+                revisitaViewController.revisita =  nil;
+            }
+        }
+        
     }
     
     // MARK: - METODOS
