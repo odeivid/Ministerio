@@ -13,8 +13,9 @@
         <attribute name="nome" attributeType="String" indexed="YES" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="notas" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="telefone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="territorio" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Revisita" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="Revisita" positionX="-63" positionY="-18" width="128" height="240"/>
     </elements>
 </model>

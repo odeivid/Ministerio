@@ -106,7 +106,11 @@
                                                 <action selector="cancelar:" destination="JXm-NM-ZZ2" id="D1q-or-FNH"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="p0l-06-fQK"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="p0l-06-fQK">
+                                            <connections>
+                                                <action selector="salvar:" destination="JXm-NM-ZZ2" id="ued-Ki-DFc"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -317,6 +321,7 @@
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="sldFonte" destination="DhA-LH-ojt" id="YTE-Iu-brz"/>
+                        <outlet property="swtEstudo" destination="z3i-BI-VdR" id="e2b-Re-bzl"/>
                         <outlet property="txtBairro" destination="Gdc-Y1-ZQf" id="IWQ-m9-HA1"/>
                         <outlet property="txtCidadeEstado" destination="mHV-PD-7bB" id="OG8-bg-JkN"/>
                         <outlet property="txtEndereco" destination="aA0-HT-cXI" id="nwO-uN-59E"/>

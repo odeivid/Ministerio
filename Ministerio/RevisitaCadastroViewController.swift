@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
 
@@ -18,12 +19,15 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     @IBOutlet weak var txtTerritorio: UITextField!
     @IBOutlet weak var txtTelefone: UITextField!
     @IBOutlet weak var txtProximaVisita: UITextField!
+    @IBOutlet weak var swtEstudo: UISwitch!
     @IBOutlet weak var txtNotas: UITextView!
     @IBOutlet weak var sldFonte: UISlider!
     
     let revisitaNotasFonte = "RevisitaNotasFonte"
     var gerenciadorLocalizacao = CLLocationManager()
     var localizacaoBuscadaSimNao = false
+    var latitude: Double = 0
+    var longitude: Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,13 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         self.sldFonte.value = Float(self.recuperarTamanhoFonte())
 
         self.configuraGerenciadorLocalizacao()
+        
+        let coreData = CoreDataRevisita()
+        
+        let revisita = coreData.getRevisitas(ativoSimNao: true)[0]
+        
+        print(revisita.ativoSimNao as Any)
+        
         
         //if ==novo registo
         //self.txtNome.becomeFirstResponder()
@@ -143,6 +154,9 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
                         self.txtBairro.text = subLocality
                         self.txtCidadeEstado.text = locality + " / " + administrativeArea
                         
+                        self.latitude = localizacaoUsuario.coordinate.latitude
+                        self.longitude = localizacaoUsuario.coordinate.longitude
+                        
                     }
                     
                 }else{
@@ -164,6 +178,28 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func salvar(_ sender: Any) {
+        
+        let coreDataRevisita = CoreDataRevisita()
+        
+        let revisita = Revisita(context: coreDataRevisita.getContext())
+
+        revisita.nome = self.txtNome.text
+        revisita.endereco = self.txtEndereco.text
+        revisita.bairro = self.txtBairro.text
+        revisita.cidade = self.txtCidadeEstado.text
+        revisita.territorio = self.txtTerritorio.text
+        revisita.telefone = self.txtTelefone.text
+        revisita.data = NSDate()
+        revisita.estudoSimNao = self.swtEstudo.isOn
+        revisita.notas = self.txtNotas.text
+        revisita.latitude = self.latitude
+        revisita.longitude = self.longitude
+        
+        coreDataRevisita.salvarRevisita(revisita: revisita)
+        
+        dismiss(animated: true, completion: nil)
+    }
  
     @IBAction func fazerLigacao(_ sender: Any) {
         if txtTelefone.text != nil {
