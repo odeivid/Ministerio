@@ -21,36 +21,23 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
 
         //a propria classa vai cuidar desses objetos
         self.mapa.delegate = self
-        self.configuraGerenciadorLocalizacao()
-        
+        MapaGerenciador().configuraGerenciadorLocalizacao(mapaDelegate: self, gerenciadorLocalizacao: gerenciadorLocalizacao)
         
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
-        //se nao foi autorizado usar a localizacao
-        if status != .authorizedWhenInUse && status != .notDetermined{
-            let alerta = UIAlertController(title: "Permissão de localização", message: "Necessário a permissão de localização para usar o aplicativo", preferredStyle: .alert)
-            
-            let acaoCancelar = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
-            
-            let acaoConfig = UIAlertAction(title: "Abrir configurações", style: .default, handler: { (alertaConfig) in
-                
-                if let configuracoes = NSURL(string: UIApplicationOpenSettingsURLString){
-                    UIApplication.shared.open(configuracoes as URL)
-                }
-            })
-            
-            alerta.addAction(acaoCancelar)
-            alerta.addAction(acaoConfig)
-            
-            present(alerta, animated: true, completion: nil)
+        //verifica se app tem permissao de localizacao
+        let alerta = MapaGerenciador().solicitarPermissaoLocalizacaoUsuario(manager: manager, status: status)
+        if alerta != nil{
+            present(alerta!, animated: true, completion: nil)
         }
+
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //centraliza
-        self.centralizarNaLocalizacao()
+        MapaGerenciador().centralizarNaLocalizacao(gerenciadorLocalizacao: gerenciadorLocalizacao, mapa: self.mapa)
         //para de atualizar localizacao
         gerenciadorLocalizacao.stopUpdatingLocation()
     }
@@ -61,20 +48,6 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     
     
     //MARK: METODOS
-    
-    func configuraGerenciadorLocalizacao() {
-        gerenciadorLocalizacao.delegate = self
-        gerenciadorLocalizacao.desiredAccuracy = kCLLocationAccuracyBest
-        gerenciadorLocalizacao.requestWhenInUseAuthorization()
-        gerenciadorLocalizacao.startUpdatingLocation()
-    }
 
-    //Centraliza o mapa na localização do usuario
-    func centralizarNaLocalizacao() {
-        if let coordenadas = gerenciadorLocalizacao.location?.coordinate{
-            let regiao = MKCoordinateRegionMakeWithDistance(coordenadas, 300, 300)
-            mapa.setRegion(regiao, animated: true)
-        }
-    }
     
 }

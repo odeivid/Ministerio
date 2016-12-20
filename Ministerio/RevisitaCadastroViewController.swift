@@ -35,14 +35,14 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         self.alterarTamanhoFonteNotas(tamanho: self.recuperarTamanhoFonte())
         self.sldFonte.value = Float(self.recuperarTamanhoFonte())
 
-        self.configuraGerenciadorLocalizacao()
+        MapaGerenciador().configuraGerenciadorLocalizacao(mapaDelegate: self, gerenciadorLocalizacao: gerenciadorLocalizacao)
         
-        let coreData = CoreDataRevisita()
+      /*  let coreData = CoreDataRevisita()
         
         let revisita = coreData.getRevisitas(ativoSimNao: true)[0]
         
         print(revisita.ativoSimNao as Any)
-        
+        */
         
         //if ==novo registo
         //self.txtNome.becomeFirstResponder()
@@ -102,6 +102,15 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         
         return true
 
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        //verifica se app tem permissao de localizacao
+        let alerta = MapaGerenciador().solicitarPermissaoLocalizacaoUsuario(manager: manager, status: status)
+        if alerta != nil{
+            present(alerta!, animated: true, completion: nil)
+        }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -222,14 +231,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     
     
     //MARK: METODOS
-    
-    func configuraGerenciadorLocalizacao() {
-        gerenciadorLocalizacao.delegate = self
-        gerenciadorLocalizacao.desiredAccuracy = kCLLocationAccuracyBest
-        gerenciadorLocalizacao.requestWhenInUseAuthorization()
-        gerenciadorLocalizacao.startUpdatingLocation()
-    }
-    
+
     func salvarTamanhoFonte(tamanho: CGFloat) {
         UserDefaults.standard.set(tamanho, forKey: self.revisitaNotasFonte)
     }
