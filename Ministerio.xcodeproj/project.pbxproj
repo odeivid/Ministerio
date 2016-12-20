@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AF08FCD21E01EC2700746338 /* RevisitaMapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF08FCD11E01EC2700746338 /* RevisitaMapaViewController.swift */; };
 		AF0F4A9E1E09B83F0054DE1B /* CoreDataRevisita.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0F4A9D1E09B83F0054DE1B /* CoreDataRevisita.swift */; };
+		AF0F4AA01E09C6880054DE1B /* RevistasListagemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0F4A9F1E09C6880054DE1B /* RevistasListagemTableViewController.swift */; };
 		AF7F11B11E04531D008526B5 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F119B1E04531D008526B5 /* IQNSArray+Sort.swift */; };
 		AF7F11B21E04531D008526B5 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F119C1E04531D008526B5 /* IQUIScrollView+Additions.swift */; };
 		AF7F11B31E04531D008526B5 /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F119D1E04531D008526B5 /* IQUITextFieldView+Additions.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		AF08FCD11E01EC2700746338 /* RevisitaMapaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevisitaMapaViewController.swift; sourceTree = "<group>"; };
 		AF0F4A9D1E09B83F0054DE1B /* CoreDataRevisita.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRevisita.swift; sourceTree = "<group>"; };
+		AF0F4A9F1E09C6880054DE1B /* RevistasListagemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevistasListagemTableViewController.swift; sourceTree = "<group>"; };
 		AF7F119B1E04531D008526B5 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
 		AF7F119C1E04531D008526B5 /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
 		AF7F119D1E04531D008526B5 /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				AF9B1D931E00AD7700FB95B6 /* AppDelegate.swift */,
 				AF08FCD11E01EC2700746338 /* RevisitaMapaViewController.swift */,
 				AFC2432F1E0331F7006BE491 /* RevisitaCadastroViewController.swift */,
+				AF0F4A9F1E09C6880054DE1B /* RevistasListagemTableViewController.swift */,
 				AF9B1D951E00AD7700FB95B6 /* ViewController.swift */,
 				AF9B1D971E00AD7700FB95B6 /* Main.storyboard */,
 				AF9B1D9D1E00AD7700FB95B6 /* Assets.xcassets */,
@@ -292,6 +295,7 @@
 				AF7F11BD1E04531D008526B5 /* IQPreviousNextView.swift in Sources */,
 				AF7F11B31E04531D008526B5 /* IQUITextFieldView+Additions.swift in Sources */,
 				AF7F11B81E04531D008526B5 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
+				AF0F4AA01E09C6880054DE1B /* RevistasListagemTableViewController.swift in Sources */,
 				AF9B1D9C1E00AD7700FB95B6 /* Ministerio.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
