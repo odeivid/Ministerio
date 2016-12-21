@@ -67,7 +67,6 @@ class RevistasListagemTableViewController: UITableViewController {
             //verifica se o sender é um inteiro. Se for é porque foi chamado ao selecionar um índice
             if let indiceSelecionado = sender as? Int{
                 revisitaViewController.revisita = revisitas[indiceSelecionado]
-                
             }else{
                 revisitaViewController.revisita =  nil;
             }

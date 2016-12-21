@@ -28,6 +28,7 @@
 		AF7F11BF1E04531D008526B5 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F11AD1E04531D008526B5 /* IQToolbar.swift */; };
 		AF7F11C01E04531D008526B5 /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F11AE1E04531D008526B5 /* IQUIView+IQKeyboardToolbar.swift */; };
 		AF7F11C11E04531D008526B5 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF7F11B01E04531D008526B5 /* IQKeyboardManager.bundle */; };
+		AF8E0B541E09FC54000AAA37 /* FuncoesGerais.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E0B531E09FC54000AAA37 /* FuncoesGerais.swift */; };
 		AF9B1D941E00AD7700FB95B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B1D931E00AD7700FB95B6 /* AppDelegate.swift */; };
 		AF9B1D961E00AD7700FB95B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B1D951E00AD7700FB95B6 /* ViewController.swift */; };
 		AF9B1D991E00AD7700FB95B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9B1D971E00AD7700FB95B6 /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		AF7F11AD1E04531D008526B5 /* IQToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQToolbar.swift; sourceTree = "<group>"; };
 		AF7F11AE1E04531D008526B5 /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
 		AF7F11B01E04531D008526B5 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		AF8E0B531E09FC54000AAA37 /* FuncoesGerais.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncoesGerais.swift; sourceTree = "<group>"; };
 		AF9B1D901E00AD7700FB95B6 /* Ministerio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ministerio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9B1D931E00AD7700FB95B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF9B1D951E00AD7700FB95B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				AF0F4AA21E09CE450054DE1B /* MapaGerenciador.swift */,
+				AF8E0B531E09FC54000AAA37 /* FuncoesGerais.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				AF7F11BF1E04531D008526B5 /* IQToolbar.swift in Sources */,
 				AF7F11BC1E04531D008526B5 /* IQBarButtonItem.swift in Sources */,
 				AF7F11BE1E04531D008526B5 /* IQTitleBarButtonItem.swift in Sources */,
+				AF8E0B541E09FC54000AAA37 /* FuncoesGerais.swift in Sources */,
 				AF0F4A9E1E09B83F0054DE1B /* CoreDataRevisita.swift in Sources */,
 				AF7F11B11E04531D008526B5 /* IQNSArray+Sort.swift in Sources */,
 				AF7F11B71E04531D008526B5 /* IQKeyboardManagerConstants.swift in Sources */,

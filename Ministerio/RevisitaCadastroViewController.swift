@@ -39,20 +39,12 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
 
         MapaGerenciador().configuraGerenciadorLocalizacao(mapaDelegate: self, gerenciadorLocalizacao: gerenciadorLocalizacao)
         
+        //se é uma revisita carregada
         if revisita != nil{
-            txtNome.text = revisita.nome
-            
+            self.carregarRevisota(revisitaCarregar: revisita)
+        }else{
+            self.txtNome.becomeFirstResponder()
         }
-        
-      /*  let coreData = CoreDataRevisita()
-        
-        let revisita = coreData.getRevisitas(ativoSimNao: true)[0]
-        
-        print(revisita.ativoSimNao as Any)
-        */
-        
-        //if ==novo registo
-        //self.txtNome.becomeFirstResponder()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -76,15 +68,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     
     func datePickerChanged(sender: UIDatePicker) {
         //converte a data em string
-        let formatterDate = DateFormatter()
-        formatterDate.dateStyle = .full
-        formatterDate.timeStyle = .short
-        //coloca o mês com 3 letras
-        formatterDate.dateFormat = formatterDate.dateFormat.replacingOccurrences(of: "MMMM", with: "MMM")
-        self.txtProximaVisita.text = formatterDate.string(from: sender.date)
-        
-        //converte a string em data
-        //print(formatterDate.date(from: self.txtProximaVisita.text!) as Any)
+        self.txtProximaVisita.text = FuncoesGerais().converterDataParaString(data: sender.date)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -123,7 +107,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         //Verifica se ja foi busca a localização e se é um novo registro
-        if self.localizacaoBuscadaSimNao == false{
+        if self.localizacaoBuscadaSimNao == false && self.revisita == nil{
             
             let localizacaoUsuario = locations.last!
             
@@ -143,10 +127,10 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
                         }
                         
                         //numero
-                        var subThoroughfare = ""
+                        /*var subThoroughfare = ""
                         if dadosLocal.thoroughfare != nil {
                             subThoroughfare = dadosLocal.subThoroughfare!
-                        }
+                        }*/
                         
                         //bairro
                         var subLocality = ""
@@ -166,7 +150,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
                             administrativeArea = dadosLocal.administrativeArea!
                         }
                         
-                        self.txtEndereco.text = thoroughfare + ", " + subThoroughfare
+                        self.txtEndereco.text = thoroughfare + ", " //+ subThoroughfare
                         self.txtBairro.text = subLocality
                         self.txtCidadeEstado.text = locality + " / " + administrativeArea
                         
@@ -179,6 +163,8 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
                     print("erro")
                 }
             }
+        }else{
+            gerenciadorLocalizacao.stopUpdatingLocation()
         }
     }
     
@@ -207,6 +193,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         revisita.territorio = self.txtTerritorio.text
         revisita.telefone = self.txtTelefone.text
         revisita.data = NSDate()
+        revisita.dataProximaVisita = FuncoesGerais().converterStringParaData(data: txtProximaVisita.text!) as NSDate?
         revisita.estudoSimNao = self.swtEstudo.isOn
         revisita.notas = self.txtNotas.text
         revisita.latitude = self.latitude
@@ -254,5 +241,22 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     
     func alterarTamanhoFonteNotas(tamanho: CGFloat) {
         txtNotas.font = UIFont(name: (txtNotas.font?.fontName)!, size: tamanho)
+    }
+    
+    
+    func carregarRevisota(revisitaCarregar: Revisita) {
+        
+        self.txtNome.text = revisitaCarregar.nome
+        self.txtEndereco.text = revisitaCarregar.endereco
+        self.txtBairro.text = revisitaCarregar.bairro
+        self.txtCidadeEstado.text = revisitaCarregar.cidade
+        self.txtTerritorio.text = revisitaCarregar.territorio
+        self.txtTelefone.text = revisitaCarregar.telefone
+        self.txtProximaVisita.text = FuncoesGerais().converterDataParaString(data: revisita.dataProximaVisita as! Date)
+        self.swtEstudo.isOn = revisitaCarregar.estudoSimNao
+        self.txtNotas.text = revisitaCarregar.notas
+        self.latitude = revisitaCarregar.latitude
+        self.longitude = revisitaCarregar.longitude
+
     }
 }
