@@ -74,6 +74,17 @@ class RevistasListagemTableViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let revisita = self.revisitas[indexPath.row]
+            
+            CoreDataRevisita().removerRevisita(revisita: revisita)
+            
+            self.carregarTabela()
+        }
+    }
+    
+    
     // MARK: - METODOS
     func carregarRevisitas() {
         revisitas = CoreDataRevisita().getRevisitas(ativoSimNao: true)

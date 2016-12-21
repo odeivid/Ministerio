@@ -86,5 +86,27 @@ class CoreDataRevisita {
         }
     }
     
+    func removerRevisita(revisita: Revisita) {
+        do{
+            let contexto = self.getContext()
+            
+            contexto.delete(revisita as NSManagedObject)
+            
+            try contexto.save()
+            
+        }catch{
+            
+        }
+    }
     
+    func inativarRevisita(revisita: Revisita) {
+        
+        revisita.ativoSimNao = false
+        
+        do{
+            try getContext().save()
+        }catch{
+            print("erro ao atualizar revisita")
+        }
+    }
 }
