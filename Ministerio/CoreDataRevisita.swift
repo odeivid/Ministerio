@@ -64,4 +64,27 @@ class CoreDataRevisita {
         return revisita
     }
     
+    func atualizarObjetoRevisitaNoContexto(revisita: Revisita, latitude: Double!, longitude:Double!, bairro: String!, cidade: String!, endereco: String!, nome: String, notas: String!, telefone: String!, territorio: String!, ativoSimNao: Bool, estudoSimNao: Bool, data: NSDate, dataProximaVisita: NSDate!) {
+        
+        revisita.nome = nome
+        revisita.endereco = endereco
+        revisita.bairro = bairro
+        revisita.cidade = cidade
+        revisita.territorio = territorio
+        revisita.telefone = telefone
+        revisita.data = data
+        revisita.dataProximaVisita = dataProximaVisita
+        revisita.estudoSimNao = estudoSimNao
+        revisita.notas = notas
+        revisita.latitude = latitude
+        revisita.longitude = longitude
+        
+        do{
+            try getContext().save()
+        }catch{
+            print("erro ao atualizar revisita")
+        }
+    }
+    
+    
 }

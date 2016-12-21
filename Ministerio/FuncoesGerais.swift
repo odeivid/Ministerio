@@ -50,7 +50,7 @@ class FuncoesGerais {
         
     }
     
-    func mostrarAlertaSimples(titulo: String, mensagem: String) -> UIAlertController! {
+    func mostrarAlertaSimples(titulo: String, mensagem: String) -> UIAlertController {
         let alerta = UIAlertController(title: titulo, message: mensagem, preferredStyle: .alert)
         
         let acaoOK = UIAlertAction(title: "OK", style: .default, handler: nil)
