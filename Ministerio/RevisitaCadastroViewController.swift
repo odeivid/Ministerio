@@ -160,7 +160,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
                     }
                     
                 }else{
-                    print("erro")
+                    print("erro: " + (erro?.localizedDescription)!)
                 }
             }
         }else{
@@ -182,24 +182,18 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
 
     @IBAction func salvar(_ sender: Any) {
         
-        let coreDataRevisita = CoreDataRevisita()
+        if txtNome.text == ""{
+            let alerta = FuncoesGerais().mostrarAlertaSimples(titulo: "Preenchimento", mensagem: "O campo nome é obrigatório")
+            if alerta != nil{
+                present(alerta!, animated: true, completion: nil)
+            }
+            return
+        }
         
-        let revisita = Revisita(context: coreDataRevisita.getContext())
-
-        revisita.nome = self.txtNome.text
-        revisita.endereco = self.txtEndereco.text
-        revisita.bairro = self.txtBairro.text
-        revisita.cidade = self.txtCidadeEstado.text
-        revisita.territorio = self.txtTerritorio.text
-        revisita.telefone = self.txtTelefone.text
-        revisita.data = NSDate()
-        revisita.dataProximaVisita = FuncoesGerais().converterStringParaData(data: txtProximaVisita.text!) as NSDate?
-        revisita.estudoSimNao = self.swtEstudo.isOn
-        revisita.notas = self.txtNotas.text
-        revisita.latitude = self.latitude
-        revisita.longitude = self.longitude
+        let dataProximaVista = FuncoesGerais().converterStringParaData(data: txtProximaVisita.text!) as NSDate?
         
-        coreDataRevisita.salvarRevisita(revisita: revisita)
+        //Funcao que cria e salva revisita
+        _ = CoreDataRevisita().criarObjetoRevisitaNoContexto(inserirNovoRegistroSimNao: true, latitude: longitude, longitude: latitude, bairro: txtBairro.text, cidade: txtCidadeEstado.text, endereco: txtEndereco.text, nome: txtNome.text!, notas: txtNotas.text, telefone: txtTelefone.text, territorio: txtTerritorio.text, ativoSimNao: true, estudoSimNao: swtEstudo.isOn, data: NSDate(), dataProximaVisita: dataProximaVista)
         
         dismiss(animated: true, completion: nil)
     }
@@ -245,18 +239,21 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     
     
     func carregarRevisota(revisitaCarregar: Revisita) {
-        
+
         self.txtNome.text = revisitaCarregar.nome
         self.txtEndereco.text = revisitaCarregar.endereco
         self.txtBairro.text = revisitaCarregar.bairro
         self.txtCidadeEstado.text = revisitaCarregar.cidade
         self.txtTerritorio.text = revisitaCarregar.territorio
         self.txtTelefone.text = revisitaCarregar.telefone
-        self.txtProximaVisita.text = FuncoesGerais().converterDataParaString(data: revisita.dataProximaVisita as! Date)
+        
         self.swtEstudo.isOn = revisitaCarregar.estudoSimNao
         self.txtNotas.text = revisitaCarregar.notas
         self.latitude = revisitaCarregar.latitude
         self.longitude = revisitaCarregar.longitude
 
+        if revisita.dataProximaVisita != nil{
+            self.txtProximaVisita.text = FuncoesGerais().converterDataParaString(data: revisita.dataProximaVisita!)
+        }
     }
 }

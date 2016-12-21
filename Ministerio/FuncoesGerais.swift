@@ -10,7 +10,11 @@ import UIKit
 
 class FuncoesGerais {
     
-    func converterDataParaString(data: Date) -> String {
+    func converterDataParaString(data: Date!) -> String {
+        
+        if data == nil{
+            return ""
+        }
         let formatterDate = DateFormatter()
         formatterDate.dateStyle = .full
         formatterDate.timeStyle = .short
@@ -23,7 +27,20 @@ class FuncoesGerais {
         //print(formatterDate.date(from: self.txtProximaVisita.text!) as Any)
     }
     
-    func converterStringParaData(data: String) -> Date {
+    func converterDataParaString(data: NSDate!) -> String{
+        if data == nil{
+            return ""
+        }
+        
+        return self.converterDataParaString(data: data as Date)
+    }
+    
+    func converterStringParaData(data: String!) -> Date! {
+        
+        if data == nil || data == ""{
+            return nil
+        }
+        
         let formatterDate = DateFormatter()
         formatterDate.dateStyle = .full
         formatterDate.timeStyle = .short
@@ -31,5 +48,15 @@ class FuncoesGerais {
         formatterDate.dateFormat = formatterDate.dateFormat.replacingOccurrences(of: "MMMM", with: "MMM")
         return formatterDate.date(from: data)!
         
+    }
+    
+    func mostrarAlertaSimples(titulo: String, mensagem: String) -> UIAlertController! {
+        let alerta = UIAlertController(title: titulo, message: mensagem, preferredStyle: .alert)
+        
+        let acaoOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alerta.addAction(acaoOK)
+        
+        return alerta
     }
 }

@@ -40,4 +40,28 @@ class CoreDataRevisita {
         }
     }
     
+    func criarObjetoRevisitaNoContexto(inserirNovoRegistroSimNao: Bool, latitude: Double!, longitude:Double!, bairro: String!, cidade: String!, endereco: String!, nome: String, notas: String!, telefone: String!, territorio: String!, ativoSimNao: Bool, estudoSimNao: Bool, data: NSDate, dataProximaVisita: NSDate!) -> Revisita {
+        
+        let revisita = Revisita(context: getContext())
+
+        revisita.nome = nome
+        revisita.endereco = endereco
+        revisita.bairro = bairro
+        revisita.cidade = cidade
+        revisita.territorio = territorio
+        revisita.telefone = telefone
+        revisita.data = data
+        revisita.dataProximaVisita = dataProximaVisita
+        revisita.estudoSimNao = estudoSimNao
+        revisita.notas = notas
+        revisita.latitude = latitude
+        revisita.longitude = longitude
+        
+        if inserirNovoRegistroSimNao == true{
+            self.salvarRevisita(revisita: revisita)
+        }
+        
+        return revisita
+    }
+    
 }
