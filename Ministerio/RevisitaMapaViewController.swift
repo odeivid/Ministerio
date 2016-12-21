@@ -15,6 +15,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     
     var gerenciadorLocalizacao = CLLocationManager()
     var contadorUpdateLocation = 0
+    var revisitas: [Revisita] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,9 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         //a propria classa vai cuidar desses objetos
         self.mapa.delegate = self
         MapaGerenciador().configuraGerenciadorLocalizacao(mapaDelegate: self, gerenciadorLocalizacao: gerenciadorLocalizacao)
+        
+        self.carregarRevisitas()
+        self.mostrarRevisitas()
         
     }
 
@@ -48,6 +52,15 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     
     
     //MARK: METODOS
-
+    func carregarRevisitas() {
+        revisitas = CoreDataRevisita().getRevisitas(ativoSimNao: true)
+    }
+    
+    func mostrarRevisitas() {
+        
+        for revisita in self.revisitas{
+            self.mapa.addAnnotation(RevisitaAnotacao(revisita: revisita))
+        }
+    }
     
 }

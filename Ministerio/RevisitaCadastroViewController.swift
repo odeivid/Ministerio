@@ -194,9 +194,9 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         
         if revisita == nil{//Novo registro
             //Funcao que cria e salva revisita
-            _ = CoreDataRevisita().criarObjetoRevisitaNoContexto(inserirNovoRegistroSimNao: true, latitude: self.longitude, longitude: self.latitude, bairro: self.txtBairro.text, cidade: self.txtCidadeEstado.text, endereco: self.txtEndereco.text, nome: self.txtNome.text!, notas: self.txtNotas.text, telefone: self.txtTelefone.text, territorio: self.txtTerritorio.text, ativoSimNao: true, estudoSimNao: self.swtEstudo.isOn, data: NSDate(), dataProximaVisita: dataProximaVista)
+            _ = CoreDataRevisita().criarObjetoRevisitaNoContexto(inserirNovoRegistroSimNao: true, latitude: self.latitude, longitude: self.longitude, bairro: self.txtBairro.text, cidade: self.txtCidadeEstado.text, endereco: self.txtEndereco.text, nome: self.txtNome.text!, notas: self.txtNotas.text, telefone: self.txtTelefone.text, territorio: self.txtTerritorio.text, ativoSimNao: true, estudoSimNao: self.swtEstudo.isOn, data: NSDate(), dataProximaVisita: dataProximaVista)
         }else{ //Atualizar
-            CoreDataRevisita().atualizarObjetoRevisitaNoContexto(revisita: self.revisita, latitude: self.longitude, longitude: self.latitude, bairro: self.txtBairro.text, cidade: self.txtCidadeEstado.text, endereco: self.txtEndereco.text, nome: self.txtNome.text!, notas: self.txtNotas.text, telefone: self.txtTelefone.text, territorio: self.txtTerritorio.text, ativoSimNao: true, estudoSimNao: self.swtEstudo.isOn, data: NSDate(), dataProximaVisita: dataProximaVista)
+            CoreDataRevisita().atualizarObjetoRevisitaNoContexto(revisita: self.revisita, latitude: self.latitude, longitude: self.longitude, bairro: self.txtBairro.text, cidade: self.txtCidadeEstado.text, endereco: self.txtEndereco.text, nome: self.txtNome.text!, notas: self.txtNotas.text, telefone: self.txtTelefone.text, territorio: self.txtTerritorio.text, ativoSimNao: true, estudoSimNao: self.swtEstudo.isOn, data: NSDate(), dataProximaVisita: dataProximaVista)
         }
         
         dismiss(animated: true, completion: nil)
