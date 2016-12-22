@@ -56,7 +56,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         
         //se for estudo pinta de verde
         if (annotation as! RevisitaAnotacao).revisita.estudoSimNao {
-            pin.pinTintColor = UIColor(colorLiteralRed: (111/255.0), green: (216/255.0), blue: (101/255.0), alpha: 1.0)
+            pin.pinTintColor = FuncoesGerais().corRevisita
         }
         pin.canShowCallout = true
         //pin.isDraggable = true
