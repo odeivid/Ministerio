@@ -47,16 +47,15 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
+        //se for anotacao da localizacao do usuario, retorna nil para manter o icon padrao
         if annotation  is MKUserLocation{
             return nil
         }
-        
+        //reusa o pin
         let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
         
-        let revisita = (annotation as! RevisitaAnotacao).revisita
-        
-        if revisita.estudoSimNao {
+        //se for estudo pinta de verde
+        if (annotation as! RevisitaAnotacao).revisita.estudoSimNao {
             pin.pinTintColor = UIColor(colorLiteralRed: (111/255.0), green: (216/255.0), blue: (101/255.0), alpha: 1.0)
         }
         pin.canShowCallout = true
@@ -79,7 +78,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     }
     
     func mostrarRevisitas() {
-        
+        //adiciona a anotacao de cada revista buscada
         for revisita in self.revisitas{
             self.mapa.addAnnotation(RevisitaAnotacao(revisita: revisita))
         }
