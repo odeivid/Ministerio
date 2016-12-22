@@ -11,7 +11,7 @@ import MapKit
 import CoreData
 
 class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
-
+    
     @IBOutlet weak var txtNome: UITextField!
     @IBOutlet weak var txtEndereco: UITextField!
     @IBOutlet weak var txtBairro: UITextField!
@@ -35,18 +35,18 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.alterarTamanhoFonteNotas(tamanho: self.recuperarTamanhoFonte())
         self.sldFonte.value = Float(self.recuperarTamanhoFonte())
-
+        
         self.mapa.delegate = self
         MapaGerenciador().configuraGerenciadorLocalizacao(mapaDelegate: self, gerenciadorLocalizacao: gerenciadorLocalizacao)
         
-        
+        self.criarReconhecimentoGesto()
         
         //se é uma revisita carregada
         if revisita != nil{
-            self.carregarRevisota(revisitaCarregar: revisita)
+            self.carregarRevisita(revisitaCarregar: revisita)
         }else{
             self.txtNome.becomeFirstResponder()
         }
@@ -55,7 +55,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
     }
@@ -97,7 +97,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         }
         
         return true
-
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -120,60 +120,8 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
             let localizacaoUsuario = locations.last!
             
             //Endereço
-            CLGeocoder().reverseGeocodeLocation(localizacaoUsuario) { (detalhesLocal, erro) in
-                if erro == nil{
-                    
-                    //marca variavel = true para nao buscar novamente
-                    self.localizacaoBuscadaSimNao = true
-                    
-                    if let dadosLocal = detalhesLocal?.first{
-                        
-                        //rua
-                        var thoroughfare = ""
-                        if dadosLocal.thoroughfare != nil {
-                            thoroughfare = dadosLocal.thoroughfare!
-                        }
-                        
-                        //numero
-                        /*var subThoroughfare = ""
-                        if dadosLocal.thoroughfare != nil {
-                            subThoroughfare = dadosLocal.subThoroughfare!
-                        }*/
-                        
-                        //bairro
-                        var subLocality = ""
-                        if dadosLocal.subLocality != nil {
-                            subLocality = dadosLocal.subLocality!
-                        }
-                        
-                        //cidade
-                        var locality = ""
-                        if dadosLocal.locality != nil {
-                            locality = dadosLocal.locality!
-                        }
-                        
-                        //estado
-                        var administrativeArea = ""
-                        if dadosLocal.administrativeArea != nil {
-                            administrativeArea = dadosLocal.administrativeArea!
-                        }
-                        
-                        self.txtEndereco.text = thoroughfare + ", " //+ subThoroughfare
-                        self.txtBairro.text = subLocality
-                        self.txtCidadeEstado.text = locality + " / " + administrativeArea
-                        
-                        self.latitude = localizacaoUsuario.coordinate.latitude
-                        self.longitude = localizacaoUsuario.coordinate.longitude
-                        
-                        if self.mapa.annotations.count == 0 {
-                            MapaGerenciador().criarAnotacao(mapa: self.mapa, titulo: thoroughfare, latitude: self.latitude, longitude: self.longitude)
-                        }
-                    }
-                    
-                }else{
-                    print("erro: " + (erro?.localizedDescription)!)
-                }
-            }
+            self.preencherEnderecoPorLocalizacao(localizacao: localizacaoUsuario)
+            
         }else{
             //se é uma revista salva, adiciona a anotacao
             if revisita != nil && self.mapa.annotations.count == 0{
@@ -222,10 +170,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         default:
             break
         }
-        
-        
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -238,7 +183,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     @IBAction func cancelar(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     @IBAction func salvar(_ sender: Any) {
         
         if txtNome.text == ""{
@@ -260,7 +205,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         
         dismiss(animated: true, completion: nil)
     }
- 
+    
     @IBAction func fazerLigacao(_ sender: Any) {
         if txtTelefone.text != nil {
             if let phoneURL = NSURL(string: "tel:" + txtTelefone.text!) {
@@ -282,7 +227,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     
     
     //MARK: METODOS
-
+    
     func salvarTamanhoFonte(tamanho: CGFloat) {
         UserDefaults.standard.set(tamanho, forKey: self.revisitaNotasFonte)
     }
@@ -301,8 +246,8 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     }
     
     
-    func carregarRevisota(revisitaCarregar: Revisita) {
-
+    func carregarRevisita(revisitaCarregar: Revisita) {
+        
         self.txtNome.text = revisitaCarregar.nome
         self.txtEndereco.text = revisitaCarregar.endereco
         self.txtBairro.text = revisitaCarregar.bairro
@@ -314,9 +259,106 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         self.txtNotas.text = revisitaCarregar.notas
         self.latitude = revisitaCarregar.latitude
         self.longitude = revisitaCarregar.longitude
-
+        
         if revisita.dataProximaVisita != nil{
             self.txtProximaVisita.text = FuncoesGerais().converterDataParaString(data: revisita.dataProximaVisita!)
         }
     }
+    
+    func preencherEnderecoPorLocalizacao(localizacao: CLLocation) {
+        
+        CLGeocoder().reverseGeocodeLocation(localizacao) { (detalhesLocal, erro) in
+            if erro == nil{
+                
+                //marca variavel = true para nao buscar novamente
+                self.localizacaoBuscadaSimNao = true
+                
+                if let dadosLocal = detalhesLocal?.first{
+                    
+                    //rua
+                    var thoroughfare = ""
+                    if dadosLocal.thoroughfare != nil {
+                        thoroughfare = dadosLocal.thoroughfare!
+                    }
+                    
+                    //numero
+                    /*var subThoroughfare = ""
+                     if dadosLocal.thoroughfare != nil {
+                     subThoroughfare = dadosLocal.subThoroughfare!
+                     }*/
+                    
+                    //bairro
+                    var subLocality = ""
+                    if dadosLocal.subLocality != nil {
+                        subLocality = dadosLocal.subLocality!
+                    }
+                    
+                    //cidade
+                    var locality = ""
+                    if dadosLocal.locality != nil {
+                        locality = dadosLocal.locality!
+                    }
+                    
+                    //estado
+                    var administrativeArea = ""
+                    if dadosLocal.administrativeArea != nil {
+                        administrativeArea = dadosLocal.administrativeArea!
+                    }
+                    
+                    self.txtEndereco.text = thoroughfare + ", " //+ subThoroughfare
+                    self.txtBairro.text = subLocality
+                    self.txtCidadeEstado.text = locality + " / " + administrativeArea
+                    
+                    self.latitude = localizacao.coordinate.latitude
+                    self.longitude = localizacao.coordinate.longitude
+                    
+                    print(self.mapa.annotations.count)
+                    
+                    if self.mapa.annotations.count == 1 {
+                        if self.mapa.annotations[0] is MKUserLocation{
+                            MapaGerenciador().criarAnotacao(mapa: self.mapa, titulo: thoroughfare, latitude: self.latitude, longitude: self.longitude)
+                        }
+                    }
+                }
+                
+            }else{
+                print("erro: " + (erro?.localizedDescription)!)
+            }
+        }
+    }
+    
+    func criarReconhecimentoGesto() {
+        
+        //cria um reconhecedor de gesto e passa a funcao executado quando o gesto acontecer
+        let reconhecedorGesto = UILongPressGestureRecognizer(target: self, action: #selector(RevisitaCadastroViewController.marcar(gesture:)))
+        reconhecedorGesto.minimumPressDuration = 2 //duracao de tempo do gesto pressionado
+        
+        mapa.addGestureRecognizer(reconhecedorGesto) //atribui o gesto ao mapa
+    }
+    
+    func marcar(gesture: UIGestureRecognizer) {
+        
+        if gesture.state == UIGestureRecognizerState.began{ //captura apenas o gesto qdo ele inicia
+            
+            //recuperar o ponto que foi clicado
+            let pontoSelecionado = gesture.location(in: self.mapa) //pega o ponto selecionado dentro do mapa
+            let coordenadas = mapa.convert(pontoSelecionado, toCoordinateFrom: self.mapa)
+            
+            print("gesto")
+            let localizacao = CLLocation(latitude: coordenadas.latitude, longitude: coordenadas.longitude)
+            
+            //apagar anotacoes que nao sejam UserLocation
+            var anotacoesRemover: [MKAnnotation] = []
+            for var anotacao in self.mapa.annotations {
+                if !(anotacao is MKUserLocation){
+                    anotacoesRemover.append(anotacao)
+                }
+            }
+            self.mapa.removeAnnotations(anotacoesRemover)
+            
+            self.preencherEnderecoPorLocalizacao(localizacao: localizacao)
+            
+        }
+    }
+    
 }
