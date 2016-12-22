@@ -46,6 +46,28 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         gerenciadorLocalizacao.stopUpdatingLocation()
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation  is MKUserLocation{
+            return nil
+        }
+        
+        let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        
+        let revisita = (annotation as! RevisitaAnotacao).revisita
+        
+        if revisita.estudoSimNao {
+            pin.pinTintColor = UIColor(colorLiteralRed: (111/255.0), green: (216/255.0), blue: (101/255.0), alpha: 1.0)
+        }
+        pin.canShowCallout = true
+        
+        //if let logo = UIImage(named: "logo-apps-foundation-small.jpg") {
+        //  pin.detailCalloutAccessoryView = UIImageView(image: logo)
+        //}
+        
+        return pin
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
