@@ -59,6 +59,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
             pin.pinTintColor = UIColor(colorLiteralRed: (111/255.0), green: (216/255.0), blue: (101/255.0), alpha: 1.0)
         }
         pin.canShowCallout = true
+        //pin.isDraggable = true
         
         //if let logo = UIImage(named: "logo-apps-foundation-small.jpg") {
         //  pin.detailCalloutAccessoryView = UIImageView(image: logo)

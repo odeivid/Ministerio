@@ -165,8 +165,9 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
                         self.latitude = localizacaoUsuario.coordinate.latitude
                         self.longitude = localizacaoUsuario.coordinate.longitude
                         
-                        MapaGerenciador().criarAnotacao(mapa: self.mapa, titulo: thoroughfare, latitude: self.latitude, longitude: self.longitude)
-                        
+                        if self.mapa.annotations.count == 0 {
+                            MapaGerenciador().criarAnotacao(mapa: self.mapa, titulo: thoroughfare, latitude: self.latitude, longitude: self.longitude)
+                        }
                     }
                     
                 }else{
@@ -175,11 +176,48 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
             }
         }else{
             //se é uma revista salva, adiciona a anotacao
-            if revisita != nil{
+            if revisita != nil && self.mapa.annotations.count == 0{
                 self.mapa.addAnnotation(RevisitaAnotacao(revisita: revisita))
             }
             
             gerenciadorLocalizacao.stopUpdatingLocation()
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        //se for anotacao da localizacao do usuario, retorna nil para manter o icon padrao
+        if annotation  is MKUserLocation{
+            return nil
+        }
+        //reusa o pin
+        let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        
+        //se for estudo pinta de verde
+        if revisita != nil{
+            if revisita.estudoSimNao {
+                pin.pinTintColor = UIColor(colorLiteralRed: (111/255.0), green: (216/255.0), blue: (101/255.0), alpha: 1.0)
+            }
+        }
+        pin.canShowCallout = true
+        pin.isDraggable = true
+        
+        //if let logo = UIImage(named: "logo-apps-foundation-small.jpg") {
+        //  pin.detailCalloutAccessoryView = UIImageView(image: logo)
+        //}
+        
+        return pin
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+        switch newState {
+        case .starting:
+            print("starting")
+        case .dragging:
+            print("dragging")
+        case .ending, .canceling:
+            print("ending")
+        default:
+            break
         }
     }
     
