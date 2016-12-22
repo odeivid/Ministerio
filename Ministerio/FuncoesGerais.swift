@@ -10,6 +10,8 @@ import UIKit
 
 class FuncoesGerais {
     
+    var corRevisita = UIColor(colorLiteralRed: (111/255.0), green: (216/255.0), blue: (101/255.0), alpha: 1.0)
+    
     func converterDataParaString(data: Date!) -> String {
         
         if data == nil{

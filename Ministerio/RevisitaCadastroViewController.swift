@@ -195,7 +195,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         //se for estudo pinta de verde
         if revisita != nil{
             if revisita.estudoSimNao {
-                pin.pinTintColor = UIColor(colorLiteralRed: (111/255.0), green: (216/255.0), blue: (101/255.0), alpha: 1.0)
+                pin.pinTintColor = FuncoesGerais().corRevisita
             }
         }
         pin.canShowCallout = true
@@ -209,6 +209,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+        
         switch newState {
         case .starting:
             print("starting")
@@ -219,7 +220,11 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         default:
             break
         }
+        
+        print(view.annotation?.title! ?? "")
+        
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
