@@ -217,11 +217,12 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
             print("dragging")
         case .ending, .canceling:
             print("ending")
+            self.latitude = (view.annotation?.coordinate.latitude)!
+            self.longitude = (view.annotation?.coordinate.longitude)!
         default:
             break
         }
         
-        print(view.annotation?.title! ?? "")
         
     }
     
