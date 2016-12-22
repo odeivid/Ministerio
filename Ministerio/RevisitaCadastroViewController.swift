@@ -23,6 +23,8 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     @IBOutlet weak var txtNotas: UITextView!
     @IBOutlet weak var sldFonte: UISlider!
     
+    @IBOutlet weak var mapa: MKMapView!
+    
     let revisitaNotasFonte = "RevisitaNotasFonte"
     var gerenciadorLocalizacao = CLLocationManager()
     var localizacaoBuscadaSimNao = false
@@ -37,7 +39,10 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         self.alterarTamanhoFonteNotas(tamanho: self.recuperarTamanhoFonte())
         self.sldFonte.value = Float(self.recuperarTamanhoFonte())
 
+        self.mapa.delegate = self
         MapaGerenciador().configuraGerenciadorLocalizacao(mapaDelegate: self, gerenciadorLocalizacao: gerenciadorLocalizacao)
+        
+        
         
         //se é uma revisita carregada
         if revisita != nil{
@@ -106,6 +111,9 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        //centraliza
+        MapaGerenciador().centralizarNaLocalizacao(gerenciadorLocalizacao: gerenciadorLocalizacao, mapa: self.mapa)
+        
         //Verifica se ja foi busca a localização e se é um novo registro
         if self.localizacaoBuscadaSimNao == false && self.revisita == nil{
             
@@ -157,6 +165,8 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
                         self.latitude = localizacaoUsuario.coordinate.latitude
                         self.longitude = localizacaoUsuario.coordinate.longitude
                         
+                        MapaGerenciador().criarAnotacao(mapa: self.mapa, titulo: thoroughfare, latitude: self.latitude, longitude: self.longitude)
+                        
                     }
                     
                 }else{
@@ -164,6 +174,11 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
                 }
             }
         }else{
+            //se é uma revista salva, adiciona a anotacao
+            if revisita != nil{
+                self.mapa.addAnnotation(RevisitaAnotacao(revisita: revisita))
+            }
+            
             gerenciadorLocalizacao.stopUpdatingLocation()
         }
     }

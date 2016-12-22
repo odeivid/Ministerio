@@ -49,4 +49,14 @@ class MapaGerenciador {
         
         return nil
     }
+    
+    func criarAnotacao(mapa: MKMapView, titulo: String?, latitude:Double, longitude: Double) {
+        
+        let anotacao = MKPointAnnotation()
+        anotacao.coordinate.latitude = latitude
+        anotacao.coordinate.longitude = longitude
+        
+        anotacao.title = titulo
+        mapa.addAnnotation(anotacao)
+    }
 }
