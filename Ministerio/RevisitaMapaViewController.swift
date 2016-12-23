@@ -68,6 +68,10 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         return pin
     }
     
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        MapaGerenciador().zoomToFitMapAnnotations(aMapView: self.mapa)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
