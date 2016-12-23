@@ -374,4 +374,10 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         }
     }
     
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        //regular o zoom para mostrar no mapa as annotacoes
+        MapaGerenciador().zoomToFitMapAnnotations(aMapView: self.mapa)
+    }
+    
+    
 }
