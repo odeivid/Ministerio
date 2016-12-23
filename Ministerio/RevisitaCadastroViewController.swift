@@ -224,7 +224,20 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         self.alterarTamanhoFonteNotas(tamanho: size)
         self.salvarTamanhoFonte(tamanho: size)
     }
-    
+    /*
+    @IBAction func mudarTipoMapa(_ sender: Any) {
+        self.mapa.showsTraffic = false
+        
+        switch (sender as! UISegmentedControl).selectedSegmentIndex {
+        case 0:
+            self.mapa.mapType = .standard
+        case 1:
+            self.mapa.mapType = .standard
+            self.mapa.showsTraffic = true
+        default: // or case 2
+            self.mapa.mapType = .hybrid
+        }
+    }*/
     
     //MARK: METODOS
     
