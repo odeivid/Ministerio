@@ -86,4 +86,16 @@ class MapaGerenciador {
         region = aMapView.regionThatFits(region)
         aMapView.setRegion(region, animated: true)
     }
+    
+    
+    func mudarTrackingMode(mapa: MKMapView) {
+        switch mapa.userTrackingMode {
+        case .none:
+            mapa.userTrackingMode = .follow
+        case .follow:
+            mapa.userTrackingMode = .followWithHeading
+        default:
+            mapa.userTrackingMode = .none
+        }
+    }
 }

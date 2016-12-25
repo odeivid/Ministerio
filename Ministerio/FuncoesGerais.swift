@@ -61,4 +61,11 @@ class FuncoesGerais {
         
         return alerta
     }
+    
+    func sombraButton(botao: UIButton) {
+        botao.layer.shadowColor = UIColor.black.cgColor
+        botao.layer.shadowOffset = CGSize(width: 3, height: 3)
+        botao.layer.shadowRadius = 5
+        botao.layer.shadowOpacity = 0.3
+    }
 }

@@ -12,6 +12,7 @@ import MapKit
 class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapa: MKMapView!
+    @IBOutlet weak var btnTrackingMode: UIButton!
     
     var gerenciadorLocalizacao = CLLocationManager()
     var contadorUpdateLocation = 0
@@ -27,6 +28,9 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         self.carregarRevisitas()
         self.mostrarRevisitas()
         
+        //Colocar sombra em botao
+        FuncoesGerais().sombraButton(botao: btnTrackingMode)
+        
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -40,10 +44,14 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //centraliza
-        MapaGerenciador().centralizarNaLocalizacao(gerenciadorLocalizacao: gerenciadorLocalizacao, mapa: self.mapa)
-        //para de atualizar localizacao
-        gerenciadorLocalizacao.stopUpdatingLocation()
+        
+        if contadorUpdateLocation < 3{
+            //centraliza
+            MapaGerenciador().centralizarNaLocalizacao(gerenciadorLocalizacao: gerenciadorLocalizacao, mapa: self.mapa)
+            //para de atualizar localizacao
+            gerenciadorLocalizacao.stopUpdatingLocation()
+            self.contadorUpdateLocation += 1
+        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -69,7 +77,11 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        MapaGerenciador().zoomToFitMapAnnotations(aMapView: self.mapa)
+        
+        if self.contadorUpdateLocation == 3{
+            MapaGerenciador().zoomToFitMapAnnotations(aMapView: self.mapa)
+            self.contadorUpdateLocation += 1
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -87,6 +99,12 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         for revisita in self.revisitas{
             self.mapa.addAnnotation(RevisitaAnotacao(revisita: revisita))
         }
+    }
+    
+    @IBAction func centralizarLocalizacaoUsuario(_ sender: Any) {
+        
+        //muda o trankingMode
+        MapaGerenciador().mudarTrackingMode(mapa: self.mapa)
     }
     
 }

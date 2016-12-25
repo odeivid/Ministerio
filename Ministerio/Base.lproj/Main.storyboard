@@ -22,19 +22,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ToL-gu-Vym">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsCompass="NO" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ToL-gu-Vym">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqq-hZ-lGQ">
+                                <rect key="frame" x="335" y="72" width="32" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="0.85054580479452058" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="5ek-vG-lEK"/>
+                                    <constraint firstAttribute="height" constant="32" id="YcH-bz-Obk"/>
+                                </constraints>
+                                <state key="normal" image="buttonMapTrackingFollow48x48"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="centralizarLocalizacaoUsuario:" destination="PMv-5w-GfY" eventType="touchUpInside" id="NW2-TG-ktP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vk4-Xn-Jmg">
+                                <rect key="frame" x="345" y="588" width="22" height="22"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="dqq-hZ-lGQ" firstAttribute="top" secondItem="3NF-Dt-Wfp" secondAttribute="bottom" constant="8" id="4VL-Le-57C"/>
+                            <constraint firstAttribute="trailing" secondItem="dqq-hZ-lGQ" secondAttribute="trailing" constant="8" id="JTG-L5-Dhh"/>
+                            <constraint firstAttribute="trailing" secondItem="vk4-Xn-Jmg" secondAttribute="trailing" constant="8" id="R4a-d9-wjT"/>
                             <constraint firstItem="ToL-gu-Vym" firstAttribute="top" secondItem="3NF-Dt-Wfp" secondAttribute="bottom" id="dd5-m1-cVi"/>
                             <constraint firstAttribute="trailing" secondItem="ToL-gu-Vym" secondAttribute="trailing" id="djQ-MC-EZ2"/>
                             <constraint firstItem="ToL-gu-Vym" firstAttribute="leading" secondItem="ER2-4v-On5" secondAttribute="leading" id="k4h-Wi-9Fi"/>
                             <constraint firstItem="sgg-H2-E0w" firstAttribute="top" secondItem="ToL-gu-Vym" secondAttribute="bottom" id="lCw-LC-qqv"/>
+                            <constraint firstItem="sgg-H2-E0w" firstAttribute="top" secondItem="vk4-Xn-Jmg" secondAttribute="bottom" constant="8" id="nwB-NW-kF7"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnTrackingMode" destination="dqq-hZ-lGQ" id="Ukt-nv-E35"/>
                         <outlet property="mapa" destination="ToL-gu-Vym" id="Gmk-WS-ZpG"/>
                     </connections>
                 </viewController>
@@ -276,7 +299,6 @@
                                                 </constraints>
                                             </mapView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.94332963197969544" green="0.94332963197969544" blue="0.94332963197969544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="tZS-0S-Ah5" secondAttribute="bottom" constant="407" id="03U-MO-hGX"/>
                                             <constraint firstAttribute="bottom" secondItem="PHc-Si-wV3" secondAttribute="bottom" constant="8" id="O8i-qz-aIA"/>
@@ -456,4 +478,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="buttonMapTrackingFollow48x48" width="24" height="24"/>
+    </resources>
 </document>
