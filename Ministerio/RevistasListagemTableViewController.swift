@@ -8,15 +8,27 @@
 
 import UIKit
 
-class RevistasListagemTableViewController: UITableViewController {
+class RevistasListagemTableViewController: UITableViewController, UISearchResultsUpdating {
 
     let segueRevisitaNome = "verRevisita"
     var revisitas: [Revisita] = []
+    var revisitasFiltradas: [Revisita] = []
+    var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.carregarRevisitas()
+        
+        //set up searchbar
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.dimsBackgroundDuringPresentation = true
+        searchController.searchBar.sizeToFit()
+        
+        searchController.searchResultsUpdater = self
+        
+        tableView.tableHeaderView = searchController.searchBar
+        tableView.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -41,15 +53,23 @@ class RevistasListagemTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return revisitas.count
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return revisitasFiltradas.count
+        }else{
+            return revisitas.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celula", for: indexPath)
 
-        cell.textLabel?.text = revisitas[indexPath.row].nome
-
+        if searchController.isActive && searchController.searchBar.text != "" {
+            cell.textLabel?.text = revisitasFiltradas[indexPath.row].nome
+        }else{
+            cell.textLabel?.text = revisitas[indexPath.row].nome
+        }
+        
         return cell
     }
     
@@ -83,6 +103,21 @@ class RevistasListagemTableViewController: UITableViewController {
             self.carregarTabela()
         }
     }
+    
+    //essa funcao precisa existir para nao dar erro ao herdar
+    func updateSearchResults(for searchController: UISearchController) {
+        revisitasFiltradas.removeAll(keepingCapacity: false)
+        
+        //filter
+        revisitasFiltradas = revisitas.filter{
+            item in
+            (item.nome?.lowercased().contains(searchController.searchBar.text!.lowercased()))!
+        }
+        
+        tableView.reloadData()
+        
+    }
+
     
     
     // MARK: - METODOS
