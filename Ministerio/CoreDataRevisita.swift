@@ -27,6 +27,27 @@ class CoreDataRevisita {
         }
     }
     
+    func getRevisitas(ativoSimNao: Bool, nome: String, territorioEndereco: String) -> [Revisita] {
+        
+        do{
+            let requisicao = Revisita.fetchRequest() as NSFetchRequest<Revisita>
+            requisicao.predicate = NSPredicate(format: "ativoSimNao = %@ AND (nome contains [c] %@ OR territorio contains [c] %@ OR endereco contains [c] %@)", ativoSimNao as CVarArg, nome, territorioEndereco, territorioEndereco, territorioEndereco)
+            
+          //  let filtroAtivo = NSPredicate(format: "ativoSimNao = %@", ativoSimNao as CVarArg)
+            //let filtroNome = NSPredicate(format: "nome beginswith [c] %@", nome)
+            //let filtroTerritorio = NSPredicate(format: "territorio contains [c] %@", TerritorioEndereco)
+            //let filtroEndereco = NSPredicate(format: "endereco contains [c] %@", TerritorioEndereco)
+            
+            //let filtrosCombinados = NSCompoundPredicate(orPredicateWithSubpredicates: [filtroNome, filtroTerritorio, filtroEndereco])
+            
+            //requisicao.predicate = filtrosCombinados
+            
+            return try self.getContext().fetch(requisicao) as [Revisita]
+        }catch{
+            return []
+        }
+    }
+    
     func salvarRevisita(revisita: Revisita) {
         do{
             let contexto = self.getContext()

@@ -111,12 +111,16 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
     func updateSearchResults(for searchController: UISearchController) {
         revisitasFiltradas.removeAll(keepingCapacity: false)
         
-        //filter
-        revisitasFiltradas = revisitas.filter{
+        //filtrar de um array
+        /*
+         revisitasFiltradas = revisitas.filter{
             item in
             (item.nome?.lowercased().contains(searchController.searchBar.text!.lowercased()))!
-        }
+        /}
+         */
         
+        revisitasFiltradas = CoreDataRevisita().getRevisitas(ativoSimNao: true, nome: searchController.searchBar.text!, territorioEndereco: searchController.searchBar.text!)
+        print(revisitasFiltradas)
         tableView.reloadData()
         
     }
