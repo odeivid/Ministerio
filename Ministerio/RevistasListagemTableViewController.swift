@@ -21,11 +21,13 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
         self.carregarRevisitas()
         
         //set up searchbar
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.dimsBackgroundDuringPresentation = true
-        searchController.searchBar.sizeToFit()
-        searchController.searchResultsUpdater = self
-        //searchController.disablesAutomaticKeyboardDismissal = false
+        
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.searchBar.sizeToFit()
+        self.searchController.searchResultsUpdater = self
+        searchController.disablesAutomaticKeyboardDismissal = false
+        definesPresentationContext = true
         
         tableView.tableHeaderView = searchController.searchBar
         tableView.reloadData()
