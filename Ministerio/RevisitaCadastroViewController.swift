@@ -374,7 +374,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
             
             //apagar anotacoes que nao sejam UserLocation
             var anotacoesRemover: [MKAnnotation] = []
-            for var anotacao in self.mapa.annotations {
+            for anotacao in self.mapa.annotations {
                 if !(anotacao is MKUserLocation){
                     anotacoesRemover.append(anotacao)
                 }

@@ -149,11 +149,6 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
     
     func carregarTabela() {
         self.revisitas = CoreDataRevisita().getRevisitas(ativoSimNao: true)
-        
-        for var rev in revisitas{
-            print(rev.dataProximaVisitaString)
-        }
-        
         tableView.reloadData()
     }
     

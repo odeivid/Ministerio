@@ -151,7 +151,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Revisitas" id="wHa-85-Xy0">
-                        <barButtonItem key="leftBarButtonItem" title="Mapa" style="plain" id="4HZ-pq-Ryb">
+                        <barButtonItem key="leftBarButtonItem" title="Mapa" id="4HZ-pq-Ryb">
                             <connections>
                                 <segue destination="PMv-5w-GfY" kind="show" id="1pu-wU-kjB"/>
                             </connections>
