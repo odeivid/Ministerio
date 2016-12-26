@@ -354,12 +354,28 @@
                                                     <constraint firstItem="sZo-vU-Hv3" firstAttribute="leading" secondItem="tZS-0S-Ah5" secondAttribute="leading" id="w5L-G4-QdE"/>
                                                 </constraints>
                                             </stackView>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PHc-Si-wV3">
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHc-Si-wV3">
                                                 <rect key="frame" x="16" y="786" width="343" height="206"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="206" id="fVU-Lj-wo6"/>
                                                 </constraints>
                                             </mapView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Z9-oo-SIu">
+                                                <rect key="frame" x="319" y="794" width="32" height="32"/>
+                                                <color key="backgroundColor" white="1" alpha="0.85054580479999997" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="4eg-4Y-usu"/>
+                                                    <constraint firstAttribute="width" constant="32" id="oob-6v-6dd"/>
+                                                </constraints>
+                                                <state key="normal" image="buttonMapTrackingFollow300x300"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="centralizarLocalizacaoUsuario:" destination="PMv-5w-GfY" eventType="touchUpInside" id="SvR-0Y-yPI"/>
+                                                    <action selector="centralizarLocalizacaoUsuario:" destination="JXm-NM-ZZ2" eventType="touchUpInside" id="WOj-K3-bs1"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92936907472379815" green="0.93857074873096447" blue="0.93857074873096447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -369,9 +385,11 @@
                                             <constraint firstItem="PHc-Si-wV3" firstAttribute="top" secondItem="tZS-0S-Ah5" secondAttribute="bottom" constant="8" id="QY5-h6-2lt"/>
                                             <constraint firstAttribute="trailing" secondItem="PHc-Si-wV3" secondAttribute="trailing" constant="16" id="Tn1-8U-P0L"/>
                                             <constraint firstItem="tZS-0S-Ah5" firstAttribute="top" secondItem="F8Q-kU-79U" secondAttribute="topMargin" constant="8" id="ego-sH-hSB"/>
+                                            <constraint firstItem="0Z9-oo-SIu" firstAttribute="top" secondItem="tZS-0S-Ah5" secondAttribute="bottom" constant="16" id="mTX-XY-nhL"/>
                                             <constraint firstAttribute="height" constant="1000" id="ooa-Xv-Hev"/>
                                             <constraint firstItem="tZS-0S-Ah5" firstAttribute="leading" secondItem="F8Q-kU-79U" secondAttribute="leadingMargin" constant="8" id="pts-S7-Vqu"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="tZS-0S-Ah5" secondAttribute="trailing" constant="8" id="q9R-2W-opg"/>
+                                            <constraint firstAttribute="trailing" secondItem="0Z9-oo-SIu" secondAttribute="trailing" constant="24" id="yvd-y5-7dy"/>
                                         </constraints>
                                     </view>
                                 </subviews>

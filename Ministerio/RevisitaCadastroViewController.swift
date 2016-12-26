@@ -229,6 +229,13 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         self.alterarTamanhoFonteNotas(tamanho: size)
         self.salvarTamanhoFonte(tamanho: size)
     }
+    
+    @IBAction func centralizarLocalizacaoUsuario(_ sender: Any) {
+        //muda o trankingMode
+        MapaGerenciador().mudarTrackingMode(mapa: self.mapa)
+    }
+    
+    
     /*
     @IBAction func mudarTipoMapa(_ sender: Any) {
         self.mapa.showsTraffic = false
