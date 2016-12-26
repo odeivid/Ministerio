@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="width" constant="32" id="5ek-vG-lEK"/>
                                     <constraint firstAttribute="height" constant="32" id="YcH-bz-Obk"/>
                                 </constraints>
-                                <state key="normal" image="buttonMapTrackingFollow48x48"/>
+                                <state key="normal" image="buttonMapTrackingFollow300x300"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
                                 </userDefinedRuntimeAttributes>
@@ -40,25 +40,51 @@
                                     <action selector="centralizarLocalizacaoUsuario:" destination="PMv-5w-GfY" eventType="touchUpInside" id="NW2-TG-ktP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vk4-Xn-Jmg">
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9bo-ek-etL">
+                                <rect key="frame" x="147" y="582" width="220" height="29"/>
+                                <color key="backgroundColor" red="0.99019607843137258" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="OwP-7a-24k"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Padrão"/>
+                                    <segment title="Híbrido"/>
+                                    <segment title="Satélite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mudarTipoMapa:" destination="PMv-5w-GfY" eventType="valueChanged" id="tt6-QZ-WGP"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vk4-Xn-Jmg">
                                 <rect key="frame" x="345" y="588" width="22" height="22"/>
+                                <color key="backgroundColor" red="0.99019607843137258" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="11"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnMostrarInfo:" destination="PMv-5w-GfY" eventType="touchUpInside" id="eWu-0U-1ws"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dqq-hZ-lGQ" firstAttribute="top" secondItem="3NF-Dt-Wfp" secondAttribute="bottom" constant="8" id="4VL-Le-57C"/>
+                            <constraint firstItem="9bo-ek-etL" firstAttribute="bottom" secondItem="vk4-Xn-Jmg" secondAttribute="bottom" id="B9E-g6-MRp"/>
                             <constraint firstAttribute="trailing" secondItem="dqq-hZ-lGQ" secondAttribute="trailing" constant="8" id="JTG-L5-Dhh"/>
                             <constraint firstAttribute="trailing" secondItem="vk4-Xn-Jmg" secondAttribute="trailing" constant="8" id="R4a-d9-wjT"/>
                             <constraint firstItem="ToL-gu-Vym" firstAttribute="top" secondItem="3NF-Dt-Wfp" secondAttribute="bottom" id="dd5-m1-cVi"/>
                             <constraint firstAttribute="trailing" secondItem="ToL-gu-Vym" secondAttribute="trailing" id="djQ-MC-EZ2"/>
+                            <constraint firstAttribute="trailing" secondItem="9bo-ek-etL" secondAttribute="trailing" constant="8" id="j2L-t8-LbV"/>
                             <constraint firstItem="ToL-gu-Vym" firstAttribute="leading" secondItem="ER2-4v-On5" secondAttribute="leading" id="k4h-Wi-9Fi"/>
                             <constraint firstItem="sgg-H2-E0w" firstAttribute="top" secondItem="ToL-gu-Vym" secondAttribute="bottom" id="lCw-LC-qqv"/>
                             <constraint firstItem="sgg-H2-E0w" firstAttribute="top" secondItem="vk4-Xn-Jmg" secondAttribute="bottom" constant="8" id="nwB-NW-kF7"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnInfo" destination="vk4-Xn-Jmg" id="2tT-kr-5BP"/>
                         <outlet property="btnTrackingMode" destination="dqq-hZ-lGQ" id="Ukt-nv-E35"/>
                         <outlet property="mapa" destination="ToL-gu-Vym" id="Gmk-WS-ZpG"/>
+                        <outlet property="sgmMapType" destination="9bo-ek-etL" id="hgL-je-Rkt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ypZ-gT-D87" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,7 +104,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V4m-no-yde" id="nLV-az-u2S">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -299,6 +325,7 @@
                                                 </constraints>
                                             </mapView>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.92936907472379815" green="0.93857074873096447" blue="0.93857074873096447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="tZS-0S-Ah5" secondAttribute="bottom" constant="407" id="03U-MO-hGX"/>
                                             <constraint firstAttribute="bottom" secondItem="PHc-Si-wV3" secondAttribute="bottom" constant="8" id="O8i-qz-aIA"/>
@@ -479,6 +506,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="buttonMapTrackingFollow48x48" width="24" height="24"/>
+        <image name="buttonMapTrackingFollow300x300" width="16" height="16"/>
     </resources>
 </document>

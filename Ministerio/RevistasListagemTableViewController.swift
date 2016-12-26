@@ -24,8 +24,8 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
         searchController = UISearchController(searchResultsController: nil)
         searchController.dimsBackgroundDuringPresentation = true
         searchController.searchBar.sizeToFit()
-        
         searchController.searchResultsUpdater = self
+        //searchController.disablesAutomaticKeyboardDismissal = false
         
         tableView.tableHeaderView = searchController.searchBar
         tableView.reloadData()
@@ -78,21 +78,6 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
         performSegue(withIdentifier: segueRevisitaNome, sender: indexPath.row)
     }
     
-    //metodo sempre executado qdo for abrir uma segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == segueRevisitaNome{
-            let revisitaViewController = segue.destination as! RevisitaCadastroViewController
-            
-            //verifica se o sender é um inteiro. Se for é porque foi chamado ao selecionar um índice
-            if let indiceSelecionado = sender as? Int{
-                revisitaViewController.revisita = revisitas[indiceSelecionado]
-            }else{
-                revisitaViewController.revisita =  nil;
-            }
-        }
-        
-    }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
@@ -118,7 +103,22 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
         
     }
 
-    
+    // MARK: - Navigation
+    //metodo sempre executado qdo for abrir uma segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == segueRevisitaNome{
+            let revisitaViewController = segue.destination as! RevisitaCadastroViewController
+            
+            //verifica se o sender é um inteiro. Se for é porque foi chamado ao selecionar um índice
+            if let indiceSelecionado = sender as? Int{
+                revisitaViewController.revisita = revisitas[indiceSelecionado]
+            }else{
+                revisitaViewController.revisita =  nil;
+            }
+        }
+        
+    }
     
     // MARK: - METODOS
     func carregarRevisitas() {
@@ -139,18 +139,6 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
     */
 
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
@@ -165,14 +153,5 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

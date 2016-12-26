@@ -13,6 +13,9 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     
     @IBOutlet weak var mapa: MKMapView!
     @IBOutlet weak var btnTrackingMode: UIButton!
+    @IBOutlet weak var btnInfo: UIButton!
+    @IBOutlet weak var sgmMapType: UISegmentedControl!
+    
     
     var gerenciadorLocalizacao = CLLocationManager()
     var contadorUpdateLocation = 0
@@ -89,9 +92,16 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     }
     
     
+    
     //MARK: METODOS
     func carregarRevisitas() {
         revisitas = CoreDataRevisita().getRevisitas(ativoSimNao: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        
+        sgmMapType.isHidden = true
+        btnInfo.isHidden = false
     }
     
     func mostrarRevisitas() {
@@ -100,11 +110,32 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
             self.mapa.addAnnotation(RevisitaAnotacao(revisita: revisita))
         }
     }
+    //MARK: ACTIONS
     
     @IBAction func centralizarLocalizacaoUsuario(_ sender: Any) {
         
         //muda o trankingMode
         MapaGerenciador().mudarTrackingMode(mapa: self.mapa)
+        
+    }
+    
+    @IBAction func btnMostrarInfo(_ sender: Any) {
+        btnInfo.isHidden = true
+        sgmMapType.isHidden = false
+    }
+    
+    @IBAction func mudarTipoMapa(_ sender: Any) {
+        switch sgmMapType.selectedSegmentIndex {
+        case 0:
+            self.mapa.mapType = .standard
+        case 1:
+            self.mapa.mapType = .hybrid
+        default:
+            self.mapa.mapType = .satellite
+        }
+        
+        sgmMapType.isHidden = true
+        btnInfo.isHidden = false
     }
     
 }
