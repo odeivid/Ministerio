@@ -27,6 +27,7 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
         self.searchController.dimsBackgroundDuringPresentation = false
         self.searchController.searchBar.sizeToFit()
         self.searchController.searchResultsUpdater = self
+        self.searchController.searchBar.placeholder = "Nome, território, endereço ou data"
         searchController.disablesAutomaticKeyboardDismissal = false
         definesPresentationContext = true
         
