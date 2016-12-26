@@ -27,11 +27,11 @@ class CoreDataRevisita {
         }
     }
     
-    func getRevisitas(ativoSimNao: Bool, nome: String, territorioEndereco: String) -> [Revisita] {
+    func getRevisitas(ativoSimNao: Bool, nome: String, territorioEndereco: String, dataProximaVisitaString: String) -> [Revisita] {
         
         do{
             let requisicao = Revisita.fetchRequest() as NSFetchRequest<Revisita>
-            requisicao.predicate = NSPredicate(format: "ativoSimNao = %@ AND (nome contains [c] %@ OR territorio contains [c] %@ OR endereco contains [c] %@)", ativoSimNao as CVarArg, nome, territorioEndereco, territorioEndereco, territorioEndereco)
+            requisicao.predicate = NSPredicate(format: "ativoSimNao = %@ AND (nome contains [c] %@ OR territorio contains [c] %@ OR endereco contains [c] %@ OR dataProximaVisitaString contains [c] %@)", ativoSimNao as CVarArg, nome, territorioEndereco, territorioEndereco, territorioEndereco, dataProximaVisitaString)
             
           //  let filtroAtivo = NSPredicate(format: "ativoSimNao = %@", ativoSimNao as CVarArg)
             //let filtroNome = NSPredicate(format: "nome beginswith [c] %@", nome)
@@ -73,6 +73,7 @@ class CoreDataRevisita {
         revisita.telefone = telefone
         revisita.data = data
         revisita.dataProximaVisita = dataProximaVisita
+        revisita.dataProximaVisitaString = FuncoesGerais().converterDataParaString(data: dataProximaVisita, style: .short)
         revisita.estudoSimNao = estudoSimNao
         revisita.notas = notas
         revisita.latitude = latitude
@@ -95,6 +96,7 @@ class CoreDataRevisita {
         revisita.telefone = telefone
         revisita.data = data
         revisita.dataProximaVisita = dataProximaVisita
+        revisita.dataProximaVisitaString = FuncoesGerais().converterDataParaString(data: dataProximaVisita, style: .short)
         revisita.estudoSimNao = estudoSimNao
         revisita.notas = notas
         revisita.latitude = latitude

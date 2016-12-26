@@ -119,7 +119,7 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
         /}
          */
         
-        revisitasFiltradas = CoreDataRevisita().getRevisitas(ativoSimNao: true, nome: searchController.searchBar.text!, territorioEndereco: searchController.searchBar.text!)
+        revisitasFiltradas = CoreDataRevisita().getRevisitas(ativoSimNao: true, nome: searchController.searchBar.text!, territorioEndereco: searchController.searchBar.text!, dataProximaVisitaString: searchController.searchBar.text!)
         print(revisitasFiltradas)
         tableView.reloadData()
         
@@ -149,6 +149,11 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
     
     func carregarTabela() {
         self.revisitas = CoreDataRevisita().getRevisitas(ativoSimNao: true)
+        
+        for var rev in revisitas{
+            print(rev.dataProximaVisitaString)
+        }
+        
         tableView.reloadData()
     }
     

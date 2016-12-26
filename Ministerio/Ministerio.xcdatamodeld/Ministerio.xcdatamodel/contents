@@ -6,6 +6,7 @@
         <attribute name="cidade" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="data" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dataProximaVisita" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dataProximaVisitaString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endereco" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="estudoSimNao" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -16,6 +17,6 @@
         <attribute name="territorio" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Revisita" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="Revisita" positionX="-63" positionY="-18" width="128" height="255"/>
     </elements>
 </model>
