@@ -12,13 +12,13 @@ class FuncoesGerais {
     
     var corRevisita = UIColor(colorLiteralRed: (111/255.0), green: (216/255.0), blue: (101/255.0), alpha: 1.0)
     
-    func converterDataParaString(data: Date!) -> String {
+    func converterDataParaString(data: Date!, style: DateFormatter.Style) -> String {
         
         if data == nil{
             return ""
         }
         let formatterDate = DateFormatter()
-        formatterDate.dateStyle = .full
+        formatterDate.dateStyle = style
         formatterDate.timeStyle = .short
         //coloca o mês com 3 letras
         formatterDate.dateFormat = formatterDate.dateFormat.replacingOccurrences(of: "MMMM", with: "MMM")
@@ -29,12 +29,12 @@ class FuncoesGerais {
         //print(formatterDate.date(from: self.txtProximaVisita.text!) as Any)
     }
     
-    func converterDataParaString(data: NSDate!) -> String{
+    func converterDataParaString(data: NSDate!, style: DateFormatter.Style) -> String{
         if data == nil{
             return ""
         }
         
-        return self.converterDataParaString(data: data as Date)
+        return self.converterDataParaString(data: data as Date, style: style)
     }
     
     func converterStringParaData(data: String!) -> Date! {

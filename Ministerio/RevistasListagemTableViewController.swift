@@ -11,6 +11,7 @@ import UIKit
 class RevistasListagemTableViewController: UITableViewController, UISearchResultsUpdating {
 
     let segueRevisitaNome = "verRevisita"
+    lazy var funcoesGerais = FuncoesGerais()
     var revisitas: [Revisita] = []
     var revisitasFiltradas: [Revisita] = []
     var searchController: UISearchController!
@@ -64,12 +65,27 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "celula", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "celula", for: indexPath) as! RevisitaCelula
 
         if searchController.isActive && searchController.searchBar.text != "" {
-            cell.textLabel?.text = revisitasFiltradas[indexPath.row].nome
+            cell.lblNome.text = revisitasFiltradas[indexPath.row].nome
+            cell.lblTerritorioEndereco.text = revisitasFiltradas[indexPath.row].endereco
+            cell.lblProximaVisita.text = funcoesGerais.converterDataParaString(data: revisitasFiltradas[indexPath.row].dataProximaVisita, style: .full)
         }else{
-            cell.textLabel?.text = revisitas[indexPath.row].nome
+            cell.lblNome.text = revisitas[indexPath.row].nome
+            
+            var territorio = ""
+            
+            //verifica se algo foi preenchido em Territorio
+            if let terriorioVerfica = revisitas[indexPath.row].territorio{
+                if terriorioVerfica != ""{
+                    territorio = terriorioVerfica + ": "
+                }
+            }
+            
+            cell.lblTerritorioEndereco.text = territorio + revisitas[indexPath.row].endereco!
+            
+            cell.lblProximaVisita.text = funcoesGerais.converterDataParaString(data: revisitas[indexPath.row].dataProximaVisita, style: .full)
         }
         
         return cell

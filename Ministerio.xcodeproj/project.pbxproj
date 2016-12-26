@@ -37,6 +37,7 @@
 		AF9B1D9E1E00AD7700FB95B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF9B1D9D1E00AD7700FB95B6 /* Assets.xcassets */; };
 		AF9B1DA11E00AD7700FB95B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9B1D9F1E00AD7700FB95B6 /* LaunchScreen.storyboard */; };
 		AF9B1DAA1E00AFC600FB95B6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9B1DA91E00AFC600FB95B6 /* MapKit.framework */; };
+		AFB1E1C01E11770900D39FF1 /* RevisitaCelula.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1E1BF1E11770900D39FF1 /* RevisitaCelula.swift */; };
 		AFC243301E0331F7006BE491 /* RevisitaCadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2432F1E0331F7006BE491 /* RevisitaCadastroViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		AF9B1DA01E00AD7700FB95B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF9B1DA21E00AD7700FB95B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF9B1DA91E00AFC600FB95B6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AFB1E1BF1E11770900D39FF1 /* RevisitaCelula.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevisitaCelula.swift; sourceTree = "<group>"; };
 		AFC2432F1E0331F7006BE491 /* RevisitaCadastroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevisitaCadastroViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 			children = (
 				AF0F4AA21E09CE450054DE1B /* MapaGerenciador.swift */,
 				AF8E0B531E09FC54000AAA37 /* FuncoesGerais.swift */,
+				AFB1E1BF1E11770900D39FF1 /* RevisitaCelula.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				AF7F11BD1E04531D008526B5 /* IQPreviousNextView.swift in Sources */,
 				AF7F11B31E04531D008526B5 /* IQUITextFieldView+Additions.swift in Sources */,
 				AF7F11B81E04531D008526B5 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
+				AFB1E1C01E11770900D39FF1 /* RevisitaCelula.swift in Sources */,
 				AF0F4AA01E09C6880054DE1B /* RevistasListagemTableViewController.swift in Sources */,
 				AF9B1D9C1E00AD7700FB95B6 /* Ministerio.xcdatamodeld in Sources */,
 			);

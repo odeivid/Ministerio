@@ -73,7 +73,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     
     func datePickerChanged(sender: UIDatePicker) {
         //converte a data em string
-        self.txtProximaVisita.text = FuncoesGerais().converterDataParaString(data: sender.date)
+        self.txtProximaVisita.text = FuncoesGerais().converterDataParaString(data: sender.date, style: .full)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -279,7 +279,7 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         self.longitude = revisitaCarregar.longitude
         
         if revisita.dataProximaVisita != nil{
-            self.txtProximaVisita.text = FuncoesGerais().converterDataParaString(data: revisita.dataProximaVisita!)
+            self.txtProximaVisita.text = FuncoesGerais().converterDataParaString(data: revisita.dataProximaVisita!, style: .full)
         }
     }
     
