@@ -97,11 +97,8 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     func carregarRevisitas() {
         revisitas = CoreDataRevisita().getRevisitas(ativoSimNao: true)
     }
-    
-    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        
-        sgmMapType.isHidden = true
-        btnInfo.isHidden = false
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.esconderTipoMapa(esconderTipo: true)
     }
     
     func mostrarRevisitas() {
@@ -110,18 +107,23 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
             self.mapa.addAnnotation(RevisitaAnotacao(revisita: revisita))
         }
     }
+    
+    func esconderTipoMapa(esconderTipo: Bool) {
+        sgmMapType.isHidden = esconderTipo
+        btnInfo.isHidden = !esconderTipo
+    }
+    
     //MARK: ACTIONS
     
     @IBAction func centralizarLocalizacaoUsuario(_ sender: Any) {
         
         //muda o trankingMode
         MapaGerenciador().mudarTrackingMode(mapa: self.mapa)
-        
     }
     
     @IBAction func btnMostrarInfo(_ sender: Any) {
-        btnInfo.isHidden = true
-        sgmMapType.isHidden = false
+
+        self.esconderTipoMapa(esconderTipo: false)
     }
     
     @IBAction func mudarTipoMapa(_ sender: Any) {
@@ -134,8 +136,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
             self.mapa.mapType = .satellite
         }
         
-        sgmMapType.isHidden = true
-        btnInfo.isHidden = false
+        self.esconderTipoMapa(esconderTipo: true)
     }
     
 }
