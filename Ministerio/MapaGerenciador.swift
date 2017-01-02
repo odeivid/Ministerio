@@ -11,6 +11,7 @@ import MapKit
 
 class MapaGerenciador {
     let udMostrarTransito = "MapaMostrarTransito"
+    let udTipoMapaSegmentedValue = "TipoMapaSegmentedValue"
     
     func configuraGerenciadorLocalizacao(mapaDelegate: CLLocationManagerDelegate, gerenciadorLocalizacao: CLLocationManager) {
         gerenciadorLocalizacao.delegate = mapaDelegate
@@ -100,7 +101,6 @@ class MapaGerenciador {
         }
     }
     
-    
     func salvarMostrarTransito(mostrar: Bool, mapa: MKMapView?) {
         UserDefaults.standard.set(mostrar, forKey: self.udMostrarTransito)
         
@@ -127,4 +127,27 @@ class MapaGerenciador {
         
     }
 
+    func salvarTipoMapaSegmentedValue(segmentedIndex: Int) {
+        UserDefaults.standard.set(segmentedIndex, forKey: self.udTipoMapaSegmentedValue)
+    }
+    
+    func recuperarTipoMapaSegmentedValue(segmented: UISegmentedControl?) -> Int{
+        if let mostraSegmentedIndex = UserDefaults.standard.object(forKey: self.udTipoMapaSegmentedValue){
+            
+            if segmented != nil{
+                segmented?.selectedSegmentIndex = mostraSegmentedIndex as! Int
+            }
+            
+            return mostraSegmentedIndex as! Int
+        }
+        
+        if segmented != nil{
+            segmented?.selectedSegmentIndex = 0
+        }
+        
+        return 0
+        
+    }
+
+    
 }

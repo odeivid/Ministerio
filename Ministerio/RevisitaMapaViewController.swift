@@ -35,8 +35,11 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         self.mostrarRevisitas()
 
         mapaGerenciador.configuraGerenciadorLocalizacao(mapaDelegate: self, gerenciadorLocalizacao: gerenciadorLocalizacao)
+        
         swtTransito.isOn = mapaGerenciador.recuperarMostrarTransito(mapa: self.mapa)
         
+        sgmMapType.selectedSegmentIndex = mapaGerenciador.recuperarTipoMapaSegmentedValue(segmented: nil)
+        self.mudarTipoMapa(self.sgmMapType)
         
         //Colocar sombra em botao
         FuncoesGerais().sombraButton(botao: btnTrackingMode)
@@ -143,6 +146,8 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         default:
             self.mapa.mapType = .satellite
         }
+        
+        MapaGerenciador().salvarTipoMapaSegmentedValue(segmentedIndex: self.sgmMapType.selectedSegmentIndex)
         
         self.esconderTipoMapa(esconderTipo: true)
     }
