@@ -369,7 +369,6 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
             let pontoSelecionado = gesture.location(in: self.mapa) //pega o ponto selecionado dentro do mapa
             let coordenadas = mapa.convert(pontoSelecionado, toCoordinateFrom: self.mapa)
             
-            print("gesto")
             let localizacao = CLLocation(latitude: coordenadas.latitude, longitude: coordenadas.longitude)
             
             //apagar anotacoes que nao sejam UserLocation

@@ -70,7 +70,18 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
 
         if searchController.isActive && searchController.searchBar.text != "" {
             cell.lblNome.text = revisitasFiltradas[indexPath.row].nome
-            cell.lblTerritorioEndereco.text = revisitasFiltradas[indexPath.row].endereco
+            
+            var territorio = ""
+            
+            //verifica se algo foi preenchido em Territorio
+            if let terriorioVerfica = revisitas[indexPath.row].territorio{
+                if terriorioVerfica != ""{
+                    territorio = terriorioVerfica + ": "
+                }
+            }
+            
+            cell.lblTerritorioEndereco.text = territorio + revisitas[indexPath.row].endereco!
+            
             cell.lblProximaVisita.text = funcoesGerais.converterDataParaString(data: revisitasFiltradas[indexPath.row].dataProximaVisita, style: .full)
         }else{
             cell.lblNome.text = revisitas[indexPath.row].nome
@@ -121,7 +132,7 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
          */
         
         revisitasFiltradas = CoreDataRevisita().getRevisitas(ativoSimNao: true, nome: searchController.searchBar.text!, territorioEndereco: searchController.searchBar.text!, dataProximaVisitaString: searchController.searchBar.text!)
-        print(revisitasFiltradas)
+        
         tableView.reloadData()
         
     }
