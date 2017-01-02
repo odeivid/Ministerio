@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class MapaGerenciador {
+    let udMostrarTransito = "MapaMostrarTransito"
     
     func configuraGerenciadorLocalizacao(mapaDelegate: CLLocationManagerDelegate, gerenciadorLocalizacao: CLLocationManager) {
         gerenciadorLocalizacao.delegate = mapaDelegate
@@ -98,4 +99,32 @@ class MapaGerenciador {
             mapa.userTrackingMode = .none
         }
     }
+    
+    
+    func salvarMostrarTransito(mostrar: Bool, mapa: MKMapView?) {
+        UserDefaults.standard.set(mostrar, forKey: self.udMostrarTransito)
+        
+        if mapa != nil{
+            mapa?.showsTraffic = mostrar
+        }
+    }
+    
+    func recuperarMostrarTransito(mapa: MKMapView?) -> Bool{
+        if let mostraTransitoRecuperado = UserDefaults.standard.object(forKey: self.udMostrarTransito){
+            
+            if mapa != nil{
+                mapa?.showsTraffic = mostraTransitoRecuperado as! Bool
+            }
+            
+            return mostraTransitoRecuperado as! Bool
+        }
+        
+        if mapa != nil{
+            mapa?.showsTraffic = false
+        }
+        
+        return false
+        
+    }
+
 }

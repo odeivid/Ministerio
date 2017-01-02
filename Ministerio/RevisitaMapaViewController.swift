@@ -13,8 +13,10 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     
     @IBOutlet weak var mapa: MKMapView!
     @IBOutlet weak var btnTrackingMode: UIButton!
+    @IBOutlet weak var viewMapType: UIView!
     @IBOutlet weak var btnInfo: UIButton!
     @IBOutlet weak var sgmMapType: UISegmentedControl!
+    @IBOutlet weak var swtTransito: UISwitch!
     
     
     var gerenciadorLocalizacao = CLLocationManager()
@@ -23,13 +25,18 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let mapaGerenciador = MapaGerenciador()
+        
         //a propria classa vai cuidar desses objetos
         self.mapa.delegate = self
-        MapaGerenciador().configuraGerenciadorLocalizacao(mapaDelegate: self, gerenciadorLocalizacao: gerenciadorLocalizacao)
-        
+
         self.carregarRevisitas()
         self.mostrarRevisitas()
+
+        mapaGerenciador.configuraGerenciadorLocalizacao(mapaDelegate: self, gerenciadorLocalizacao: gerenciadorLocalizacao)
+        swtTransito.isOn = mapaGerenciador.recuperarMostrarTransito(mapa: self.mapa)
+        
         
         //Colocar sombra em botao
         FuncoesGerais().sombraButton(botao: btnTrackingMode)
@@ -87,6 +94,10 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.esconderTipoMapa(esconderTipo: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -97,9 +108,6 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     func carregarRevisitas() {
         revisitas = CoreDataRevisita().getRevisitas(ativoSimNao: true)
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.esconderTipoMapa(esconderTipo: true)
-    }
     
     func mostrarRevisitas() {
         //adiciona a anotacao de cada revista buscada
@@ -109,8 +117,9 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     }
     
     func esconderTipoMapa(esconderTipo: Bool) {
-        sgmMapType.isHidden = esconderTipo
+      //  sgmMapType.isHidden = esconderTipo
         btnInfo.isHidden = !esconderTipo
+        viewMapType.isHidden = esconderTipo
     }
     
     //MARK: ACTIONS
@@ -125,9 +134,8 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
 
         self.esconderTipoMapa(esconderTipo: false)
     }
-    
     @IBAction func mudarTipoMapa(_ sender: Any) {
-        switch sgmMapType.selectedSegmentIndex {
+        switch self.sgmMapType.selectedSegmentIndex {
         case 0:
             self.mapa.mapType = .standard
         case 1:
@@ -138,5 +146,10 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         
         self.esconderTipoMapa(esconderTipo: true)
     }
+    
+    @IBAction func mostrarTransito(_ sender: Any) {
+        MapaGerenciador().salvarMostrarTransito(mostrar: self.swtTransito.isOn, mapa: self.mapa)
+    }
+    
     
 }

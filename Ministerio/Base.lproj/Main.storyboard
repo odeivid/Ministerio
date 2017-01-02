@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsCompass="NO" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ToL-gu-Vym">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToL-gu-Vym">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqq-hZ-lGQ">
@@ -40,26 +40,59 @@
                                     <action selector="centralizarLocalizacaoUsuario:" destination="PMv-5w-GfY" eventType="touchUpInside" id="NW2-TG-ktP"/>
                                 </connections>
                             </button>
-                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9bo-ek-etL">
-                                <rect key="frame" x="147" y="582" width="220" height="29"/>
-                                <color key="backgroundColor" red="0.99019607843137258" green="1" blue="1" alpha="0.80048694349315064" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4E-Nz-yo2">
+                                <rect key="frame" x="127" y="527" width="240" height="83"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zHg-e7-a4B">
+                                        <rect key="frame" x="183" y="44" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="mostrarTransito:" destination="PMv-5w-GfY" eventType="valueChanged" id="asd-2j-7Xk"/>
+                                        </connections>
+                                    </switch>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="w0s-R6-lG1">
+                                        <rect key="frame" x="8" y="8" width="224" height="29"/>
+                                        <segments>
+                                            <segment title="Padrão"/>
+                                            <segment title="Híbrido"/>
+                                            <segment title="Satélite"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="mudarTipoMapa:" destination="PMv-5w-GfY" eventType="valueChanged" id="cba-QJ-LC2"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trânsito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfp-Rc-bCa">
+                                        <rect key="frame" x="12" y="49" width="62" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="OwP-7a-24k"/>
+                                    <constraint firstItem="kfp-Rc-bCa" firstAttribute="top" secondItem="w0s-R6-lG1" secondAttribute="bottom" constant="13" id="3Du-QM-wzX"/>
+                                    <constraint firstAttribute="height" constant="83" id="KGW-rz-DYV"/>
+                                    <constraint firstItem="kfp-Rc-bCa" firstAttribute="leading" secondItem="j4E-Nz-yo2" secondAttribute="leading" constant="12" id="KMb-1r-T9z"/>
+                                    <constraint firstItem="zHg-e7-a4B" firstAttribute="top" secondItem="w0s-R6-lG1" secondAttribute="bottom" constant="8" id="OSX-QP-NCe"/>
+                                    <constraint firstItem="w0s-R6-lG1" firstAttribute="centerX" secondItem="j4E-Nz-yo2" secondAttribute="centerX" id="QXu-bU-bN3"/>
+                                    <constraint firstItem="w0s-R6-lG1" firstAttribute="top" secondItem="j4E-Nz-yo2" secondAttribute="top" constant="8" id="Qsh-lo-dTt"/>
+                                    <constraint firstAttribute="width" constant="240" id="Wvy-kq-AKf"/>
+                                    <constraint firstAttribute="trailing" secondItem="zHg-e7-a4B" secondAttribute="trailing" constant="8" id="dud-96-ysu"/>
+                                    <constraint firstAttribute="trailing" secondItem="w0s-R6-lG1" secondAttribute="trailing" constant="8" id="yNW-SR-p4L"/>
+                                    <constraint firstItem="w0s-R6-lG1" firstAttribute="leading" secondItem="j4E-Nz-yo2" secondAttribute="leading" constant="8" id="yQx-PR-7GD"/>
                                 </constraints>
-                                <segments>
-                                    <segment title="Padrão"/>
-                                    <segment title="Híbrido"/>
-                                    <segment title="Satélite"/>
-                                </segments>
-                                <connections>
-                                    <action selector="mudarTipoMapa:" destination="PMv-5w-GfY" eventType="valueChanged" id="tt6-QZ-WGP"/>
-                                </connections>
-                            </segmentedControl>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vk4-Xn-Jmg">
                                 <rect key="frame" x="345" y="588" width="22" height="22"/>
                                 <color key="backgroundColor" red="0.99019607843137258" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="11"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="11"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnMostrarInfo:" destination="PMv-5w-GfY" eventType="touchUpInside" id="eWu-0U-1ws"/>
@@ -69,12 +102,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dqq-hZ-lGQ" firstAttribute="top" secondItem="3NF-Dt-Wfp" secondAttribute="bottom" constant="8" id="4VL-Le-57C"/>
-                            <constraint firstItem="9bo-ek-etL" firstAttribute="bottom" secondItem="vk4-Xn-Jmg" secondAttribute="bottom" id="B9E-g6-MRp"/>
+                            <constraint firstAttribute="trailing" secondItem="j4E-Nz-yo2" secondAttribute="trailing" constant="8" id="Hrg-mt-3sb"/>
                             <constraint firstAttribute="trailing" secondItem="dqq-hZ-lGQ" secondAttribute="trailing" constant="8" id="JTG-L5-Dhh"/>
                             <constraint firstAttribute="trailing" secondItem="vk4-Xn-Jmg" secondAttribute="trailing" constant="8" id="R4a-d9-wjT"/>
                             <constraint firstItem="ToL-gu-Vym" firstAttribute="top" secondItem="3NF-Dt-Wfp" secondAttribute="bottom" id="dd5-m1-cVi"/>
                             <constraint firstAttribute="trailing" secondItem="ToL-gu-Vym" secondAttribute="trailing" id="djQ-MC-EZ2"/>
-                            <constraint firstAttribute="trailing" secondItem="9bo-ek-etL" secondAttribute="trailing" constant="8" id="j2L-t8-LbV"/>
+                            <constraint firstItem="sgg-H2-E0w" firstAttribute="top" secondItem="j4E-Nz-yo2" secondAttribute="bottom" constant="8" id="hRh-vp-ro0"/>
                             <constraint firstItem="ToL-gu-Vym" firstAttribute="leading" secondItem="ER2-4v-On5" secondAttribute="leading" id="k4h-Wi-9Fi"/>
                             <constraint firstItem="sgg-H2-E0w" firstAttribute="top" secondItem="ToL-gu-Vym" secondAttribute="bottom" id="lCw-LC-qqv"/>
                             <constraint firstItem="sgg-H2-E0w" firstAttribute="top" secondItem="vk4-Xn-Jmg" secondAttribute="bottom" constant="8" id="nwB-NW-kF7"/>
@@ -84,7 +117,9 @@
                         <outlet property="btnInfo" destination="vk4-Xn-Jmg" id="2tT-kr-5BP"/>
                         <outlet property="btnTrackingMode" destination="dqq-hZ-lGQ" id="Ukt-nv-E35"/>
                         <outlet property="mapa" destination="ToL-gu-Vym" id="Gmk-WS-ZpG"/>
-                        <outlet property="sgmMapType" destination="9bo-ek-etL" id="hgL-je-Rkt"/>
+                        <outlet property="sgmMapType" destination="w0s-R6-lG1" id="RFO-IB-2dU"/>
+                        <outlet property="swtTransito" destination="zHg-e7-a4B" id="xiH-LN-YCW"/>
+                        <outlet property="viewMapType" destination="j4E-Nz-yo2" id="IZ9-Vo-svs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ypZ-gT-D87" userLabel="First Responder" sceneMemberID="firstResponder"/>
