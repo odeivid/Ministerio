@@ -24,6 +24,11 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     @IBOutlet weak var sldFonte: UISlider!
     
     @IBOutlet weak var mapa: MKMapView!
+    @IBOutlet weak var viewMapType: UIView!
+    @IBOutlet weak var btnInfo: UIButton!
+    @IBOutlet weak var sgmMapType: UISegmentedControl!
+    @IBOutlet weak var swtTransito: UISwitch!
+    
     
     let revisitaNotasFonte = "RevisitaNotasFonte"
     var gerenciadorLocalizacao = CLLocationManager()
@@ -36,11 +41,19 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let mapaGerenciador = MapaGerenciador()
+        
         self.alterarTamanhoFonteNotas(tamanho: self.recuperarTamanhoFonte())
         self.sldFonte.value = Float(self.recuperarTamanhoFonte())
         
         self.mapa.delegate = self
         MapaGerenciador().configuraGerenciadorLocalizacao(mapaDelegate: self, gerenciadorLocalizacao: gerenciadorLocalizacao)
+        
+        swtTransito.isOn = mapaGerenciador.recuperarMostrarTransito(mapa: self.mapa)
+        
+        sgmMapType.selectedSegmentIndex = mapaGerenciador.recuperarTipoMapaSegmentedValue(segmented: nil)
+        self.mudarTipoMapa(self.sgmMapType)
+        
         
         self.criarReconhecimentoGesto()
         
@@ -53,10 +66,12 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.esconderTipoMapa(esconderTipo: true)
         view.endEditing(true)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.esconderTipoMapa(esconderTipo: true)
         view.endEditing(true)
     }
     
@@ -235,21 +250,28 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         MapaGerenciador().mudarTrackingMode(mapa: self.mapa)
     }
     
+    @IBAction func btnMostrarInfo(_ sender: Any) {
+        self.esconderTipoMapa(esconderTipo: false)
+    }
     
-    /*
     @IBAction func mudarTipoMapa(_ sender: Any) {
-        self.mapa.showsTraffic = false
-        
-        switch (sender as! UISegmentedControl).selectedSegmentIndex {
+        switch self.sgmMapType.selectedSegmentIndex {
         case 0:
             self.mapa.mapType = .standard
         case 1:
-            self.mapa.mapType = .standard
-            self.mapa.showsTraffic = true
-        default: // or case 2
             self.mapa.mapType = .hybrid
+        default:
+            self.mapa.mapType = .satellite
         }
-    }*/
+        
+        MapaGerenciador().salvarTipoMapaSegmentedValue(segmentedIndex: self.sgmMapType.selectedSegmentIndex)
+        
+        self.esconderTipoMapa(esconderTipo: true)
+    }
+    
+    @IBAction func mostrarTransito(_ sender: Any) {
+        MapaGerenciador().salvarMostrarTransito(mostrar: self.swtTransito.isOn, mapa: self.mapa)
+    }
     
     //MARK: METODOS
     
@@ -385,6 +407,10 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
         }
     }
     
-    
+    func esconderTipoMapa(esconderTipo: Bool) {
+        //  sgmMapType.isHidden = esconderTipo
+        btnInfo.isHidden = !esconderTipo
+        viewMapType.isHidden = esconderTipo
+    }
     
 }

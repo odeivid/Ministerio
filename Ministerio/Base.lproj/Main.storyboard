@@ -265,7 +265,7 @@
                                                         <rect key="frame" x="0.0" y="38" width="343" height="30"/>
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bairro" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Gdc-Y1-ZQf">
-                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="168" height="30"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
@@ -274,7 +274,7 @@
                                                                 </connections>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cidade / Estado" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mHV-PD-7bB">
-                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="30"/>
+                                                                <rect key="frame" x="176" y="0.0" width="167" height="30"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
@@ -392,6 +392,67 @@
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHc-Si-wV3">
                                                 <rect key="frame" x="16" y="601" width="343" height="391"/>
                                             </mapView>
+                                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUQ-br-AZG">
+                                                <rect key="frame" x="111" y="900" width="240" height="83"/>
+                                                <subviews>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="k9W-46-sfi">
+                                                        <rect key="frame" x="183" y="44" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="mostrarTransito:" destination="PMv-5w-GfY" eventType="valueChanged" id="HWH-tO-Puh"/>
+                                                            <action selector="mostrarTransito:" destination="JXm-NM-ZZ2" eventType="valueChanged" id="dxt-bR-0IG"/>
+                                                        </connections>
+                                                    </switch>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TUI-1e-q4J">
+                                                        <rect key="frame" x="8" y="8" width="224" height="29"/>
+                                                        <segments>
+                                                            <segment title="Padrão"/>
+                                                            <segment title="Híbrido"/>
+                                                            <segment title="Satélite"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="mudarTipoMapa:" destination="JXm-NM-ZZ2" eventType="valueChanged" id="MEW-FD-fmR"/>
+                                                            <action selector="mudarTipoMapa:" destination="PMv-5w-GfY" eventType="valueChanged" id="nMB-C0-6mY"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trânsito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21f-H4-sH6">
+                                                        <rect key="frame" x="12" y="49" width="62" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="TUI-1e-q4J" firstAttribute="top" secondItem="QUQ-br-AZG" secondAttribute="top" constant="8" id="6wc-of-p2n"/>
+                                                    <constraint firstAttribute="height" constant="83" id="7o8-o7-7Kp"/>
+                                                    <constraint firstAttribute="width" constant="240" id="9b4-ox-kvf"/>
+                                                    <constraint firstItem="k9W-46-sfi" firstAttribute="top" secondItem="TUI-1e-q4J" secondAttribute="bottom" constant="8" id="ALO-Y8-gUa"/>
+                                                    <constraint firstItem="21f-H4-sH6" firstAttribute="leading" secondItem="QUQ-br-AZG" secondAttribute="leading" constant="12" id="Lbz-cg-eD1"/>
+                                                    <constraint firstAttribute="trailing" secondItem="k9W-46-sfi" secondAttribute="trailing" constant="8" id="Uw1-wh-FsQ"/>
+                                                    <constraint firstItem="21f-H4-sH6" firstAttribute="top" secondItem="TUI-1e-q4J" secondAttribute="bottom" constant="13" id="Vcx-45-waQ"/>
+                                                    <constraint firstItem="TUI-1e-q4J" firstAttribute="centerX" secondItem="QUQ-br-AZG" secondAttribute="centerX" id="rZp-m0-KMn"/>
+                                                    <constraint firstItem="TUI-1e-q4J" firstAttribute="leading" secondItem="QUQ-br-AZG" secondAttribute="leading" constant="8" id="vqC-d3-QEV"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TUI-1e-q4J" secondAttribute="trailing" constant="8" id="zvo-m2-tZh"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuA-a7-STY">
+                                                <rect key="frame" x="329" y="962" width="22" height="22"/>
+                                                <color key="backgroundColor" red="0.99019607840000001" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="11"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="btnMostrarInfo:" destination="PMv-5w-GfY" eventType="touchUpInside" id="2VC-0i-R6I"/>
+                                                    <action selector="btnMostrarInfo:" destination="JXm-NM-ZZ2" eventType="touchUpInside" id="3Yi-m2-KMn"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Z9-oo-SIu">
                                                 <rect key="frame" x="319" y="609" width="32" height="32"/>
                                                 <color key="backgroundColor" white="1" alpha="0.85054580479999997" colorSpace="calibratedWhite"/>
@@ -412,15 +473,19 @@
                                         <color key="backgroundColor" red="0.92936907472379815" green="0.93857074873096447" blue="0.93857074873096447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="tZS-0S-Ah5" secondAttribute="bottom" constant="407" id="03U-MO-hGX"/>
+                                            <constraint firstAttribute="bottom" secondItem="vuA-a7-STY" secondAttribute="bottom" constant="16" id="GtQ-bY-4nl"/>
                                             <constraint firstAttribute="bottom" secondItem="PHc-Si-wV3" secondAttribute="bottom" constant="8" id="O8i-qz-aIA"/>
                                             <constraint firstItem="PHc-Si-wV3" firstAttribute="leading" secondItem="F8Q-kU-79U" secondAttribute="leading" constant="16" id="Olw-tD-2AX"/>
                                             <constraint firstItem="PHc-Si-wV3" firstAttribute="top" secondItem="tZS-0S-Ah5" secondAttribute="bottom" constant="8" id="QY5-h6-2lt"/>
                                             <constraint firstAttribute="trailing" secondItem="PHc-Si-wV3" secondAttribute="trailing" constant="16" id="Tn1-8U-P0L"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="QUQ-br-AZG" secondAttribute="trailing" constant="16" id="VzT-Sg-8rt"/>
                                             <constraint firstItem="tZS-0S-Ah5" firstAttribute="top" secondItem="F8Q-kU-79U" secondAttribute="topMargin" constant="8" id="ego-sH-hSB"/>
                                             <constraint firstItem="0Z9-oo-SIu" firstAttribute="top" secondItem="tZS-0S-Ah5" secondAttribute="bottom" constant="16" id="mTX-XY-nhL"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="vuA-a7-STY" secondAttribute="trailing" constant="16" id="mkJ-yG-SGl"/>
                                             <constraint firstAttribute="height" constant="1000" id="ooa-Xv-Hev"/>
                                             <constraint firstItem="tZS-0S-Ah5" firstAttribute="leading" secondItem="F8Q-kU-79U" secondAttribute="leadingMargin" constant="8" id="pts-S7-Vqu"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="tZS-0S-Ah5" secondAttribute="trailing" constant="8" id="q9R-2W-opg"/>
+                                            <constraint firstAttribute="bottom" secondItem="QUQ-br-AZG" secondAttribute="bottom" constant="16" id="yIv-w2-P95"/>
                                             <constraint firstAttribute="trailing" secondItem="0Z9-oo-SIu" secondAttribute="trailing" constant="24" id="yvd-y5-7dy"/>
                                         </constraints>
                                     </view>
@@ -454,9 +519,12 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1110"/>
                     <connections>
+                        <outlet property="btnInfo" destination="vuA-a7-STY" id="KrW-aI-NTN"/>
                         <outlet property="mapa" destination="PHc-Si-wV3" id="0jZ-Ie-vhC"/>
+                        <outlet property="sgmMapType" destination="TUI-1e-q4J" id="Jy3-xW-k3e"/>
                         <outlet property="sldFonte" destination="DhA-LH-ojt" id="YTE-Iu-brz"/>
                         <outlet property="swtEstudo" destination="z3i-BI-VdR" id="e2b-Re-bzl"/>
+                        <outlet property="swtTransito" destination="k9W-46-sfi" id="7u7-lr-Xqf"/>
                         <outlet property="txtBairro" destination="Gdc-Y1-ZQf" id="IWQ-m9-HA1"/>
                         <outlet property="txtCidadeEstado" destination="mHV-PD-7bB" id="OG8-bg-JkN"/>
                         <outlet property="txtEndereco" destination="aA0-HT-cXI" id="nwO-uN-59E"/>
@@ -465,11 +533,12 @@
                         <outlet property="txtProximaVisita" destination="sfG-QP-SIF" id="W4J-PP-dGM"/>
                         <outlet property="txtTelefone" destination="oA8-5i-jHH" id="BVs-WM-7xf"/>
                         <outlet property="txtTerritorio" destination="ZdM-Kt-LEf" id="dFL-3h-Upt"/>
+                        <outlet property="viewMapType" destination="QUQ-br-AZG" id="qQP-BU-pZL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oId-ZF-vcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2647.1999999999998" y="-612.59370314842579"/>
+            <point key="canvasLocation" x="2562" y="-1106"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b7G-tC-Ldp">

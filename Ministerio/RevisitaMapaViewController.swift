@@ -137,6 +137,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
 
         self.esconderTipoMapa(esconderTipo: false)
     }
+    
     @IBAction func mudarTipoMapa(_ sender: Any) {
         switch self.sgmMapType.selectedSegmentIndex {
         case 0:
