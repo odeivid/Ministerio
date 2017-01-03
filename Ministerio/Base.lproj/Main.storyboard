@@ -120,11 +120,12 @@
                         <outlet property="sgmMapType" destination="w0s-R6-lG1" id="RFO-IB-2dU"/>
                         <outlet property="swtTransito" destination="zHg-e7-a4B" id="xiH-LN-YCW"/>
                         <outlet property="viewMapType" destination="j4E-Nz-yo2" id="IZ9-Vo-svs"/>
+                        <segue destination="JXm-NM-ZZ2" kind="presentation" identifier="verRevisita" id="DRV-An-4bI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ypZ-gT-D87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797.5999999999999" y="-1304.7976011994003"/>
+            <point key="canvasLocation" x="1815" y="-1306"/>
         </scene>
         <!--Revisitas-->
         <scene sceneID="zLT-T8-kvd">
@@ -265,7 +266,7 @@
                                                         <rect key="frame" x="0.0" y="38" width="343" height="30"/>
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bairro" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Gdc-Y1-ZQf">
-                                                                <rect key="frame" x="0.0" y="0.0" width="168" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
@@ -274,7 +275,7 @@
                                                                 </connections>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cidade / Estado" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mHV-PD-7bB">
-                                                                <rect key="frame" x="176" y="0.0" width="167" height="30"/>
+                                                                <rect key="frame" x="175.5" y="0.0" width="167.5" height="30"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
@@ -415,7 +416,7 @@
                                                         </connections>
                                                     </segmentedControl>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trânsito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21f-H4-sH6">
-                                                        <rect key="frame" x="12" y="49" width="62" height="21"/>
+                                                        <rect key="frame" x="12" y="49" width="62" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -663,4 +664,7 @@
     <resources>
         <image name="buttonMapTrackingFollow300x300" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="DRV-An-4bI"/>
+    </inferredMetricsTieBreakers>
 </document>

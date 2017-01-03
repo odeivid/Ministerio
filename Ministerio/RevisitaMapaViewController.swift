@@ -18,7 +18,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     @IBOutlet weak var sgmMapType: UISegmentedControl!
     @IBOutlet weak var swtTransito: UISwitch!
     
-    
+    let segueRevisitaNome = "verRevisita"
     var gerenciadorLocalizacao = CLLocationManager()
     var contadorUpdateLocation = 0
     var revisitas: [Revisita] = []
@@ -80,6 +80,10 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
             pin.pinTintColor = FuncoesGerais().corRevisita
         }
         pin.canShowCallout = true
+        
+        let btn = UIButton(type: .detailDisclosure)
+        pin.rightCalloutAccessoryView = btn
+        
         //pin.isDraggable = true
         
         //if let logo = UIImage(named: "logo-apps-foundation-small.jpg") {
@@ -87,6 +91,34 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         //}
         
         return pin
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let revisitaAnotacao = view.annotation as! RevisitaAnotacao
+        
+        
+        if control == view.rightCalloutAccessoryView {
+            print(view.annotation?.title! as Any)
+            print(revisitaAnotacao.revisita.cidade ?? "")
+            performSegue(withIdentifier: self.segueRevisitaNome, sender: revisitaAnotacao.revisita)
+        }
+        
+        /*
+        let placeName = revisitaAnotacao
+        let placeInfo = revisitaAnotacao
+        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+        */
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if (segue.identifier == self.segueRevisitaNome) {
+            let revisitaViewController = segue.destination as! RevisitaCadastroViewController
+            
+            revisitaViewController.revisita = sender as! Revisita
+        }
     }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
