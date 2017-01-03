@@ -105,7 +105,7 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //abre uma segue com um identificador, por código
-        performSegue(withIdentifier: segueRevisitaNome, sender: indexPath.row)
+        performSegue(withIdentifier: self.segueRevisitaNome, sender: indexPath.row)
     }
     
     
@@ -141,7 +141,7 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
     //metodo sempre executado qdo for abrir uma segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == segueRevisitaNome{
+        if segue.identifier == self.segueRevisitaNome{
             let revisitaViewController = segue.destination as! RevisitaCadastroViewController
             
             //verifica se o sender é um inteiro. Se for é porque foi chamado ao selecionar um índice
