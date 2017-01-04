@@ -22,6 +22,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     var gerenciadorLocalizacao = CLLocationManager()
     var contadorUpdateLocation = 0
     var revisitas: [Revisita] = []
+    var revisitaAnotacaoSelecionada: MKAnnotation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,25 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if (self.revisitaAnotacaoSelecionada != nil){
+            
+            self.carregarRevisitas()
+            
+            self.mapa.removeAnnotation(self.revisitaAnotacaoSelecionada)
+            
+            let revisita = (revisitaAnotacaoSelecionada as! RevisitaAnotacao).revisita
+            let anotacao = RevisitaAnotacao(revisita: revisita)
+            
+            self.mapa.addAnnotation(anotacao)
+            
+            self.revisitaAnotacaoSelecionada = nil
+            
+            self.mapa.selectAnnotation(anotacao, animated: true)
+        }
+    }
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         //verifica se app tem permissao de localizacao
@@ -94,12 +114,12 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        let revisitaAnotacao = view.annotation as! RevisitaAnotacao
-        
         
         if control == view.rightCalloutAccessoryView {
-            print(view.annotation?.title! as Any)
-            print(revisitaAnotacao.revisita.cidade ?? "")
+            let revisitaAnotacao = view.annotation as! RevisitaAnotacao
+            
+            self.revisitaAnotacaoSelecionada = revisitaAnotacao
+            
             performSegue(withIdentifier: self.segueRevisitaNome, sender: revisitaAnotacao.revisita)
         }
         
