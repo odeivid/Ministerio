@@ -408,9 +408,23 @@ class RevisitaCadastroViewController: UIViewController, UITextFieldDelegate, UIS
     }
     
     func esconderTipoMapa(esconderTipo: Bool) {
-        //  sgmMapType.isHidden = esconderTipo
-        btnInfo.isHidden = !esconderTipo
-        viewMapType.isHidden = esconderTipo
+        if esconderTipo{  //esconde mapa e mostra info
+            self.btnInfo.isHidden = false
+            
+            self.viewMapType.fadeOut(0.2, delay: 0, completion: { (Bool) in
+            })
+            
+            self.btnInfo.fadeIn(0.2, delay: 0, completion: { (Bool) in
+            })
+        }else{
+            self.viewMapType.isHidden = false
+            
+            self.btnInfo.fadeOut(0.2, delay: 0, completion: { (Bool) in
+            })
+            
+            self.viewMapType.fadeIn(0.2, delay: 0, completion: { (Bool) in
+            })
+        }
     }
     
 }
