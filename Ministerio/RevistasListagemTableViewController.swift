@@ -16,6 +16,9 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
     var revisitasFiltradas: [Revisita] = []
     var searchController: UISearchController!
     
+    private var lastContentOffset: CGFloat = 0
+    var tablevieSetTo0 = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,13 +35,19 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
         definesPresentationContext = true
         
         tableView.tableHeaderView = searchController.searchBar
+        
         self.tableView.reloadData()
+        
+        //esconder searchBar ao abrir view
+        self.tableView.contentInset = UIEdgeInsets(top: -44, left: 0, bottom: 0, right: 0)
+    
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         //self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -135,6 +144,21 @@ class RevistasListagemTableViewController: UITableViewController, UISearchResult
         
         tableView.reloadData()
         
+    }
+    
+    //Mostrar a searchBar
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if (self.lastContentOffset > scrollView.contentOffset.y) {
+            if lastContentOffset < -55{
+                
+                if !tablevieSetTo0 {
+                    self.tableView.contentInset = UIEdgeInsets(top: 65, left: 0, bottom: 0, right: 0)
+                    tablevieSetTo0 = true
+                }
+            }
+        }
+        self.lastContentOffset = scrollView.contentOffset.y
     }
 
     // MARK: - Navigation
