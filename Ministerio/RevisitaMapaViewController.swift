@@ -20,7 +20,6 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     
     let segueRevisitaNome = "verRevisita"
     var gerenciadorLocalizacao = CLLocationManager()
-    var contadorUpdateLocation = 0
     var revisitas: [Revisita] = []
     var revisitaAnotacaoSelecionada: MKAnnotation!
     
@@ -47,7 +46,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
         
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         if (self.revisitaAnotacaoSelecionada != nil){
             
@@ -60,11 +59,18 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
             
             self.mapa.addAnnotation(anotacao)
             
+            self.mapa.selectAnnotation(anotacao, animated: true)
+            
+            MapaGerenciador().centralizarNaLocalizacao(localizacao: self.revisitaAnotacaoSelecionada.coordinate, mapa: self.mapa)
+            
             self.revisitaAnotacaoSelecionada = nil
             
-            self.mapa.selectAnnotation(anotacao, animated: true)
+        }else{
+            //centralizar na localizacao do usuario
+            MapaGerenciador().centralizarNaLocalizacao(gerenciadorLocalizacao: gerenciadorLocalizacao, mapa: self.mapa)
         }
     }
+    
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
@@ -74,17 +80,6 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
             present(alerta!, animated: true, completion: nil)
         }
 
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        if contadorUpdateLocation < 3{
-            //centraliza
-            MapaGerenciador().centralizarNaLocalizacao(gerenciadorLocalizacao: gerenciadorLocalizacao, mapa: self.mapa)
-            //para de atualizar localizacao
-            gerenciadorLocalizacao.stopUpdatingLocation()
-            self.contadorUpdateLocation += 1
-        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -142,10 +137,9 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        
-        if self.contadorUpdateLocation == 3{
+        //faz o zoom nas anotacoes se a qtde de annotations é igual a qtde de revisitas + 1 (motivo +1: incluir UserLocation)
+        if self.revisitas.count + 1 == self.mapa.annotations.count{
             MapaGerenciador().zoomToFitMapAnnotations(aMapView: self.mapa)
-            self.contadorUpdateLocation += 1
         }
     }
     

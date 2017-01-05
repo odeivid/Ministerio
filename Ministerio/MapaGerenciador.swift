@@ -23,9 +23,13 @@ class MapaGerenciador {
     //Centraliza o mapa na localização do usuario
     func centralizarNaLocalizacao(gerenciadorLocalizacao: CLLocationManager, mapa: MKMapView) {
         if let coordenadas = gerenciadorLocalizacao.location?.coordinate{
-            let regiao = MKCoordinateRegionMakeWithDistance(coordenadas, 300, 300)
-            mapa.setRegion(regiao, animated: true)
+            self.centralizarNaLocalizacao(localizacao: coordenadas, mapa: mapa)
         }
+    }
+    
+    func centralizarNaLocalizacao(localizacao: CLLocationCoordinate2D, mapa: MKMapView) {
+        let regiao = MKCoordinateRegionMakeWithDistance(localizacao, 300, 300)
+        mapa.setRegion(regiao, animated: true)
     }
     
     func solicitarPermissaoLocalizacaoUsuario(manager: CLLocationManager, status: CLAuthorizationStatus) -> UIAlertController! {
