@@ -19,9 +19,11 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     @IBOutlet weak var swtTransito: UISwitch!
     
     let segueRevisitaNome = "verRevisita"
+    let segueNovaRevisita = "novaRevisita"
     var gerenciadorLocalizacao = CLLocationManager()
     var revisitas: [Revisita] = []
     var revisitaAnotacaoSelecionada: MKAnnotation!
+    var cadastroNovaRevista = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +68,16 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
             //self.revisitaAnotacaoSelecionada = nil
             
         }else{
+            //verifica se é nova revisita para recarregar todos as anotacoes
+            if self.cadastroNovaRevista == true {
+                self.cadastroNovaRevista = false
+                
+                self.mapa.removeAnnotations(self.mapa.annotations)
+                self.carregarRevisitas()
+                self.mostrarRevisitas()
+            }
+            
+            
             //centralizar na localizacao do usuario
             MapaGerenciador().centralizarNaLocalizacao(gerenciadorLocalizacao: gerenciadorLocalizacao, mapa: self.mapa)
         }
@@ -133,6 +145,10 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
             let revisitaViewController = segue.destination as! RevisitaCadastroViewController
             
             revisitaViewController.revisita = sender as! Revisita
+        }
+        
+        else if (segue.identifier == self.segueNovaRevisita){
+            self.cadastroNovaRevista = true
         }
     }
     

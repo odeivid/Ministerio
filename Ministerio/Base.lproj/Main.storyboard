@@ -116,7 +116,7 @@
                     <navigationItem key="navigationItem" title="Mapa" id="QZk-7s-OcG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="F6g-Cu-Pj0">
                             <connections>
-                                <segue destination="JXm-NM-ZZ2" kind="presentation" id="Cpd-1E-M85"/>
+                                <segue destination="JXm-NM-ZZ2" kind="presentation" identifier="novaRevisita" id="Cpd-1E-M85"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -672,6 +672,6 @@
         <image name="buttonMapTrackingFollow300x300" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DRV-An-4bI"/>
+        <segue reference="Cpd-1E-M85"/>
     </inferredMetricsTieBreakers>
 </document>
