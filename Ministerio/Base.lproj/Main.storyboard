@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Revisita Mapa View Controller-->
+        <!--Mapa-->
         <scene sceneID="76P-hr-Or2">
             <objects>
-                <viewController id="PMv-5w-GfY" customClass="RevisitaMapaViewController" customModule="Ministerio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Mapa" id="PMv-5w-GfY" customClass="RevisitaMapaViewController" customModule="Ministerio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3NF-Dt-Wfp"/>
                         <viewControllerLayoutGuide type="bottom" id="sgg-H2-E0w"/>
@@ -113,6 +113,13 @@
                             <constraint firstItem="sgg-H2-E0w" firstAttribute="top" secondItem="vk4-Xn-Jmg" secondAttribute="bottom" constant="8" id="nwB-NW-kF7"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Mapa" id="QZk-7s-OcG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="F6g-Cu-Pj0">
+                            <connections>
+                                <segue destination="JXm-NM-ZZ2" kind="presentation" id="Cpd-1E-M85"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="btnInfo" destination="vk4-Xn-Jmg" id="2tT-kr-5BP"/>
                         <outlet property="btnTrackingMode" destination="dqq-hZ-lGQ" id="Ukt-nv-E35"/>
