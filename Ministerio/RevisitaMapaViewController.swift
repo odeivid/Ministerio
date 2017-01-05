@@ -63,7 +63,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
             
        //     MapaGerenciador().centralizarNaLocalizacao(localizacao: self.revisitaAnotacaoSelecionada.coordinate, mapa: self.mapa)
             
-            self.revisitaAnotacaoSelecionada = nil
+            //self.revisitaAnotacaoSelecionada = nil
             
         }else{
             //centralizar na localizacao do usuario
@@ -138,7 +138,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         //faz o zoom nas anotacoes se a qtde de annotations é igual a qtde de revisitas + 1 (motivo +1: incluir UserLocation)
-        if self.revisitas.count + 1 == self.mapa.annotations.count{
+        if self.revisitas.count + 1 == self.mapa.annotations.count && self.revisitaAnotacaoSelecionada == nil{
             MapaGerenciador().zoomToFitMapAnnotations(aMapView: self.mapa)
         }
     }
