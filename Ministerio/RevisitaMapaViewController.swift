@@ -61,7 +61,7 @@ class RevisitaMapaViewController: UIViewController, MKMapViewDelegate, CLLocatio
             
             self.mapa.selectAnnotation(anotacao, animated: true)
             
-            MapaGerenciador().centralizarNaLocalizacao(localizacao: self.revisitaAnotacaoSelecionada.coordinate, mapa: self.mapa)
+       //     MapaGerenciador().centralizarNaLocalizacao(localizacao: self.revisitaAnotacaoSelecionada.coordinate, mapa: self.mapa)
             
             self.revisitaAnotacaoSelecionada = nil
             
