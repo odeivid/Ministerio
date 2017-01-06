@@ -577,28 +577,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="inicio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmX-yj-Efz">
-                                <rect key="frame" x="166" y="323" width="40" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HV-HW-gRj">
-                                <rect key="frame" x="139" y="580" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="RGe-qN-F0k">
+                                <rect key="frame" x="16" y="293" width="343" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zX3-VM-f2P">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" red="0.2528775036" green="0.36831873659999997" blue="0.56528609990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="qva-u3-WJM"/>
+                                            <constraint firstAttribute="height" constant="80" id="sWR-ri-vp3"/>
+                                        </constraints>
+                                        <state key="normal" image="jworgSiteLogo"/>
+                                        <connections>
+                                            <action selector="abrirSiteJW:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pnW-xl-4Nf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bs-b3-4sq">
+                                        <rect key="frame" x="263" y="0.0" width="80" height="80"/>
+                                        <color key="backgroundColor" red="0.35896283388137817" green="0.23627451062202454" blue="0.53732049465179443" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="1Ed-L3-KSU"/>
+                                            <constraint firstAttribute="height" constant="80" id="CTy-qo-1f0"/>
+                                        </constraints>
+                                        <state key="normal" image="jwAppLogo"/>
+                                        <connections>
+                                            <action selector="abrirAppJW:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ldy-C6-6c9"/>
+                                            <action selector="abrirSiteJW:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z1P-af-sCw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="RGe-qN-F0k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9UY-7f-gra"/>
+                            <constraint firstItem="RGe-qN-F0k" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HrC-3x-4OC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RGe-qN-F0k" secondAttribute="trailing" id="Iaw-aM-zb7"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="ji5-sr-oya"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="991" y="139"/>
+            <point key="canvasLocation" x="989.60000000000002" y="138.98050974512745"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Qeo-4E-ipv">
@@ -670,6 +691,8 @@
     </scenes>
     <resources>
         <image name="buttonMapTrackingFollow300x300" width="16" height="16"/>
+        <image name="jwAppLogo" width="270" height="270"/>
+        <image name="jworgSiteLogo" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Cpd-1E-M85"/>
